@@ -6296,6 +6296,12 @@ ul,
 ol {
   margin: 1em 0;
 }
+ul ul,
+ol ol,
+ul ol,
+ol ul {
+  margin-top: 0;
+}
 a {
   cursor: pointer;
 }
@@ -6404,6 +6410,8 @@ POST
 }
 .article-container header h2 {
   margin: 0;
+  -ms-word-wrap: break-word;
+  word-wrap: break-word;
 }
 .article-container header .header-title {
   margin-top: 20px;
@@ -6411,6 +6419,39 @@ POST
 .article-container .post-body {
   margin-bottom: 10px;
   margin-top: 10px;
+}
+.article-container .post-body h1 {
+  font-size: 2em;
+}
+.article-container .post-body h2 {
+  font-size: 1.8em;
+}
+.article-container .post-body h3 {
+  font-size: 1.6em;
+}
+.article-container .post-body h4 {
+  font-size: 1.4em;
+}
+.article-container .post-body h5 {
+  font-size: 1.2em;
+}
+.article-container .post-body h6 {
+  font-size: 1em;
+}
+.article-container .post-body blockquote {
+  font-size: 1.2em;
+  font-style: italic;
+  margin: 0 10px;
+  padding: 0 10px;
+  border-left: 5px solid #E6E6E6;
+}
+.article-container .post-body blockquote cite {
+  margin-left: 0;
+}
+.article-container .post-body cite {
+  margin-left: 10px;
+  font-size: initial;
+  font-style: initial;
 }
 .article-container .post-body a {
   text-decoration: underline;

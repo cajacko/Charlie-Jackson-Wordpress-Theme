@@ -84,10 +84,13 @@ IS THE FRONT PAGE SHOWING
 FILTER OEMBED OUTPUT
 ----------------------------- */	
 	function my_embed_oembed_html($html, $url, $attr, $post_id) {
-		$html = preg_replace('/(width=").+?(")/', '', $html);
-		$html = preg_replace('/(height=").+?(")/', '', $html);
-		$html = str_replace('iframe', 'iframe class="embed-responsive-item"', $html);
-	  return '<div class="embed-responsive embed-responsive-16by9">' . $html . '</div>';
+		if (strpos($html,'youtube.com') !== false) {
+			$html = preg_replace('/(width=").+?(")/', '', $html);
+			$html = preg_replace('/(height=").+?(")/', '', $html);
+			$html = str_replace('iframe', 'iframe class="embed-responsive-item"', $html);
+			$html = '<div class="embed-responsive embed-responsive-16by9">' . $html . '</div>';
+		}
+			return $html;
 	}
 	
 	add_filter('embed_oembed_html', 'my_embed_oembed_html', 99, 4);
@@ -270,6 +273,15 @@ DISPLAY MULTIPLE POST THUMBNAILS
 	            'post_type' => 'page'
 	        )
 	    );
+	}
+
+/* -----------------------------
+ADJUST THE MORE TEXT TAG
+----------------------------- */	
+	add_filter( 'the_content_more_link', 'modify_read_more_link' );
+	
+	function modify_read_more_link() {
+		return '<a class="more-link" href="' . get_permalink() . '">Read more...</a>';
 	}
 	
 /* -----------------------------

@@ -35,6 +35,7 @@ ADD THEME SUPPORT
 	add_image_size( 'width-3000', 3000 );
 	add_image_size( 'width-3500', 3500 );
 	add_image_size( 'width-4000', 4000 );
+	add_post_type_support( "page", "excerpt" );
 
 /* -----------------------------
 ENQUE STYLES AND SCRIPTS
@@ -72,7 +73,7 @@ IS THE FRONT PAGE SHOWING
 	}
 	
 /* -----------------------------
-IS THE FRONT PAGE SHOWING
+FILTER OEMBED OUTPUT
 ----------------------------- */	
 	function my_embed_oembed_html($html, $url, $attr, $post_id) {
 		$html = preg_replace('/(width=").+?(")/', '', $html);
@@ -82,12 +83,6 @@ IS THE FRONT PAGE SHOWING
 	}
 	
 	add_filter('embed_oembed_html', 'my_embed_oembed_html', 99, 4);
-
-/* -----------------------------
-EXCERPT FOR PAGES	
------------------------------ */	
-	
-	add_post_type_support( "page", "excerpt" );
 	
 /* -----------------------------
 REGISTER PAGE CATEGORIES	
@@ -186,81 +181,79 @@ ADD MEDIA SIZES
 /* -----------------------------
 INCREASE MAX UPLOAD SIZE	
 ----------------------------- */
-	
 	@ini_set( ‘upload_max_size’ , ‘10G’);
 
 	@ini_set( ‘post_max_size’, ‘10G’);
 	
 	@ini_set( ‘max_execution_time’, ‘300’);
 
-/*******************************
-DISPLAY PORTFOLIO META BOXES
-*******************************/
 
-/* If the page template is movement page, then show the relevant fields */	
-
-//$post_object = get_post($_GET['post']);
-
-  // check for a template type
- // if (has_term("portfolio", "project-categories", $post_object)) {
-   	/* Define the custom box */
-	add_action( 'add_meta_boxes', 'charlie_jackson_add_custom_box' );
+/* -----------------------------
+DISPLAY PORTFOLIO META BOXES	
+----------------------------- */
+	/* If the page template is movement page, then show the relevant fields */	
 	
-	/* Do something with the data entered */
-	add_action( 'save_post', 'charlie_jackson_save_postdata' );
-  //}
+	//$post_object = get_post($_GET['post']);
+	
+	  // check for a template type
+	 // if (has_term("portfolio", "project-categories", $post_object)) {
+	   	/* Define the custom box */
+		add_action( 'add_meta_boxes', 'charlie_jackson_add_custom_box' );
+		
+		/* Do something with the data entered */
+		add_action( 'save_post', 'charlie_jackson_save_postdata' );
+	  //}
+	
+	/* Adds a box to the main column on the Post and Page edit screens */
+	function charlie_jackson_add_custom_box() {
+	  add_meta_box( 'portfolio-meta-box', 'Portfolio Content', 'wp_editor_meta_box' );
+	}
+	
+	/* Prints the box content */
+	function wp_editor_meta_box( $post ) {
+	
+	  // Use nonce for verification
+	  wp_nonce_field( plugin_basename( __FILE__ ), 'charlie_jackson_noncename' );
+	
+	  $field_value = get_post_meta( $post->ID, 'portfolio_content', false );
+	  wp_editor( $field_value[0], 'portfolio_content' );
+	}
+	
+	/* When the post is saved, saves our custom data */
+	function charlie_jackson_save_postdata( $post_id ) {
+	
+	  // verify if this is an auto save routine. 
+	  // If it is our form has not been submitted, so we dont want to do anything
+	  if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) 
+	      return;
+	
+	  // verify this came from the our screen and with proper authorization,
+	  // because save_post can be triggered at other times
+	  if ( ( isset ( $_POST['charlie_jackson_noncename'] ) ) && ( ! wp_verify_nonce( $_POST['charlie_jackson_noncename'], plugin_basename( __FILE__ ) ) ) )
+	      return;
+	
+	  // Check permissions
+	  if ( ( isset ( $_POST['post_type'] ) ) && ( 'page' == $_POST['post_type'] )  ) {
+	    if ( ! current_user_can( 'edit_page', $post_id ) ) {
+	      return;
+	    }    
+	  }
+	  else {
+	    if ( ! current_user_can( 'edit_post', $post_id ) ) {
+	      return;
+	    }
+	  }
+	
+	  // OK, we're authenticated: we need to find and save the data
+	  if ( isset ( $_POST['portfolio_content'] ) ) {
+	    update_post_meta( $post_id, 'portfolio_content', $_POST['portfolio_content'] );
+	  }
+	
+	}
 
-/* Adds a box to the main column on the Post and Page edit screens */
-function charlie_jackson_add_custom_box() {
-  add_meta_box( 'portfolio-meta-box', 'Portfolio Content', 'wp_editor_meta_box' );
-}
-
-/* Prints the box content */
-function wp_editor_meta_box( $post ) {
-
-  // Use nonce for verification
-  wp_nonce_field( plugin_basename( __FILE__ ), 'charlie_jackson_noncename' );
-
-  $field_value = get_post_meta( $post->ID, 'portfolio_content', false );
-  wp_editor( $field_value[0], 'portfolio_content' );
-}
-
-/* When the post is saved, saves our custom data */
-function charlie_jackson_save_postdata( $post_id ) {
-
-  // verify if this is an auto save routine. 
-  // If it is our form has not been submitted, so we dont want to do anything
-  if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) 
-      return;
-
-  // verify this came from the our screen and with proper authorization,
-  // because save_post can be triggered at other times
-  if ( ( isset ( $_POST['charlie_jackson_noncename'] ) ) && ( ! wp_verify_nonce( $_POST['charlie_jackson_noncename'], plugin_basename( __FILE__ ) ) ) )
-      return;
-
-  // Check permissions
-  if ( ( isset ( $_POST['post_type'] ) ) && ( 'page' == $_POST['post_type'] )  ) {
-    if ( ! current_user_can( 'edit_page', $post_id ) ) {
-      return;
-    }    
-  }
-  else {
-    if ( ! current_user_can( 'edit_post', $post_id ) ) {
-      return;
-    }
-  }
-
-  // OK, we're authenticated: we need to find and save the data
-  if ( isset ( $_POST['portfolio_content'] ) ) {
-    update_post_meta( $post_id, 'portfolio_content', $_POST['portfolio_content'] );
-  }
-
-}
-
-/*******************************
+/* -----------------------------
 DISPLAY MULTIPLE POST THUMBNAILS
-*******************************/
-
+----------------------------- */
 	if (class_exists('MultiPostThumbnails')) {
 	    new MultiPostThumbnails(
 	        array(
@@ -271,10 +264,9 @@ DISPLAY MULTIPLE POST THUMBNAILS
 	    );
 	}
 	
-/*******************************
+/* -----------------------------
 FILTER MEDIA BY QUERY
-*******************************/	
-	
+----------------------------- */	
 	function charlie_jackson_filter_media_by_query( $query ) {
 		
 		if($_GET['pinterest-media'] == 'pinterest-sketchbook') {
@@ -299,10 +291,9 @@ FILTER MEDIA BY QUERY
 	}
 	add_action( 'pre_get_posts', 'charlie_jackson_filter_media_by_query' );
 		
-/*******************************
+/* -----------------------------
 ADD ADMIN MENU ITEMS
-*******************************/		
-	
+----------------------------- */		
 	add_action( 'admin_bar_menu', 'charlie_jackson_add_sketch_pinterest_menu', 999 );
 
 	function charlie_jackson_add_sketch_pinterest_menu( $wp_admin_bar ) {
@@ -314,7 +305,28 @@ ADD ADMIN MENU ITEMS
 		);
 		$wp_admin_bar->add_node( $args );
 	}
-			
+
+/* -----------------------------
+FILTER ATTACHMENT OUTPUT
+----------------------------- */	
+	add_filter( 'img_caption_shortcode', 'my_caption_html', 10, 3 );
+	
+	function my_caption_html( $current_html, $attr, $content ) {
+	    extract(shortcode_atts(array(
+	        'id'    => '',
+	        'align' => 'alignnone',
+	        'width' => '',
+	        'caption' => ''
+	    ), $attr));
+	    if ( 1 > (int) $width || empty($caption) )
+	        return $content;
+	
+	    if ( $id ) $id = 'id="' . esc_attr($id) . '" ';
+	
+	    return '<div class="caption">'
+	. do_shortcode( $content ) . '<p class="caption-text">' . $caption . '</p></div>';
+	}	
+		
 /* -----------------------------
 BOOTSTRAP PAGE NAV
 ----------------------------- */	

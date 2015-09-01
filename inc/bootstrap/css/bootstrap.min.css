@@ -6396,6 +6396,19 @@ POST
 #post-loop article .post-body a {
   text-decoration: underline;
 }
+#post-loop article .post-body .caption {
+  width: 100%;
+}
+#post-loop article .post-body .caption .caption-text {
+  font-style: italic;
+  text-align: center;
+  margin: 0.5em 0 2em 0;
+  font-size: 0.8em;
+}
+#post-loop article .post-body img {
+  width: 100%;
+  height: auto;
+}
 #post-loop article footer {
   padding-bottom: 10px;
   padding-top: 10px;

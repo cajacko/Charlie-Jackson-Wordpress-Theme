@@ -17,7 +17,7 @@
 					<li class="site-navigation-item site-navigation-element">
 						<a class="top-level-nav-link">Hire Me <i class="fa fa-caret-down hide-without-javascript"></i></a>
 						<ul class="sub-nav">
-							<li><a href="">CV</a></li>
+							<li><a target="_blank" href="<?php echo get_template_directory_uri(); ?>/inc/media/cv.pdf">CV</a></li>
 							<li><a href="<?php echo home_url(); ?>/portfolio">Portfolio</a></li>
 							<li><a href="">Personal Statement</a></li>
 							<li><a href="">Email Me</a></li>
@@ -26,11 +26,11 @@
 					<li class="site-navigation-item site-navigation-element">
 						<a class="top-level-nav-link">Follow Me <i class="fa fa-caret-down hide-without-javascript"></i></a>
 						<ul class="sub-nav">
-							<li><a href="">LinkedIn</a></li>
-							<li><a href="">Twitter</a></li>
-							<li><a href="">Pinterest</a></li>
-							<li><a href="">YouTube</a></li>
-							<li><a href="">Email Newsletter</a></li>
+							<li><a target="_blank" href="http://uk.linkedin.com/in/charliejackson9">LinkedIn</a></li>
+							<li><a target="_blank" href="https://twitter.com/charliejackson">Twitter</a></li>
+							<li><a target="_blank" href="https://uk.pinterest.com/cajacko/">Pinterest</a></li>
+							<li><a target="_blank" href="https://www.youtube.com/c/CharlieJackson9">YouTube</a></li>
+							<li><a href="mailto:contact@charliejackson.com">Email Newsletter</a></li>
 						</ul>
 					</li>
 				</ul>

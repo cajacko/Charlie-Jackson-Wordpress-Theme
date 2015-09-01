@@ -378,8 +378,19 @@ POST FORMAT FUNCTION
 	function charliejackson_the_video_content() {
 		$content = preg_replace ( "/<p><div class=\"embed-responsive embed-responsive-16by9\"><iframe.*<\/div><\/p>/" , "" , get_the_content_with_formatting());
 		$content = preg_replace ( "/<div class=\"embed-responsive embed-responsive-16by9\"><iframe.*<\/div>/" , "" , $content);
-		echo $content;
+		echo $content;	
+	}
+	
+	function charliejackson_the_gallery() {
+		preg_match ( "/(?s)<div id=\'gallery.*?<\/figure>
+		<\/div>/" , get_the_content_with_formatting(), $match);
 		
+		echo $match[0];
+	}
+	
+	function charliejackson_the_gallery_content() {
+		echo preg_replace ( "/(?s)<div id=\'gallery.*?<\/figure>
+		<\/div>/" , "" , get_the_content_with_formatting());
 	}
 		
 /* -----------------------------

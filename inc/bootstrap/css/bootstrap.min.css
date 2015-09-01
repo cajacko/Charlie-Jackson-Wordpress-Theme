@@ -258,8 +258,8 @@ th {
 }
 @font-face {
   font-family: 'Glyphicons Halflings';
-  src: url('http://charliejackson.com/wp-content/themes/charlie-jackson/inc/bootstrap/fonts/glyphicons-halflings-regular.eot');
-  src: url('http://charliejackson.com/wp-content/themes/charlie-jackson/inc/bootstrap/fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('http://charliejackson.com/wp-content/themes/charlie-jackson/inc/bootstrap/fonts/glyphicons-halflings-regular.woff') format('woff'), url('http://charliejackson.com/wp-content/themes/charlie-jackson/inc/bootstrap/fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('http://charliejackson.com/wp-content/themes/charlie-jackson/inc/bootstrap/fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+  src: url('http://localhost:8888/charliejackson/wp-content/themes/charliejackson/inc/bootstrap/fonts/glyphicons-halflings-regular.eot');
+  src: url('http://localhost:8888/charliejackson/wp-content/themes/charliejackson/inc/bootstrap/fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('http://localhost:8888/charliejackson/wp-content/themes/charliejackson/inc/bootstrap/fonts/glyphicons-halflings-regular.woff') format('woff'), url('http://localhost:8888/charliejackson/wp-content/themes/charliejackson/inc/bootstrap/fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('http://localhost:8888/charliejackson/wp-content/themes/charliejackson/inc/bootstrap/fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
 }
 .glyphicon {
   position: relative;
@@ -6349,11 +6349,166 @@ main #main-wrap {
   }
 }
 /* -----------------------------
+SITE NAVIGATION
+----------------------------- */
+#site-navigation.absolute-nav {
+  position: absolute;
+  width: 100%;
+}
+#site-navigation {
+  background-color: rgba(0, 25, 33, 0.9);
+}
+#site-navigation .display-table-cell {
+  vertical-align: middle;
+}
+#site-navigation nav #mobile-nav-dropdown,
+#site-navigation nav #site-navigation-list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+#site-navigation nav #site-navigation-list .top-level-nav-link,
+#site-navigation nav #site-navigation-list h2 a,
+#site-navigation nav #site-navigation-list #mobile-nav-icon {
+  color: white;
+}
+#site-navigation nav #site-navigation-list .top-level-nav-link:hover,
+#site-navigation nav #site-navigation-list h2 a:hover,
+#site-navigation nav #site-navigation-list #mobile-nav-icon:hover {
+  color: white;
+}
+#site-navigation nav #site-navigation-list h2 a:hover,
+#site-navigation nav #site-navigation-list #mobile-nav-icon:hover {
+  color: #EAEAEA;
+}
+#site-navigation nav #site-navigation-list h2 a,
+#site-navigation nav #site-navigation-list #mobile-nav-icon {
+  padding: 20px 0;
+  display: inline-block;
+}
+#site-navigation nav #site-navigation-list #site-navigation-items {
+  text-align: right;
+}
+#site-navigation nav #site-navigation-list .active-sub-nav {
+  text-decoration: underline;
+}
+#site-navigation nav #site-navigation-list .dimmed-nav-item {
+  color: #EAEAEA;
+}
+#site-navigation nav #site-navigation-list #site-logo h2 {
+  margin: 0;
+  font-size: 1.3em;
+  font-weight: 400;
+}
+#site-navigation nav #site-navigation-list #site-logo h2 a:hover {
+  text-decoration: none;
+}
+#site-navigation nav #site-navigation-list .sub-nav {
+  list-style: none;
+  padding: 0;
+  display: none;
+}
+#site-navigation nav #site-navigation-list .sub-nav li a {
+  display: block;
+  padding: 10px 20px;
+}
+@media (max-height: 600px) {
+  #site-navigation.fixed-nav {
+    width: 100%;
+    position: absolute;
+  }
+}
+@media (min-height: 600px) {
+  #site-navigation.fixed-nav {
+    z-index: 9999;
+    top: 0;
+    width: 100%;
+    position: fixed;
+  }
+}
+@media (min-width: 700px) {
+  #site-navigation nav #site-navigation-list .top-level-nav-link {
+    padding: 10px 0;
+    display: inline-block;
+  }
+  #site-navigation nav #site-navigation-list .site-navigation-item {
+    width: 125px;
+    text-align: right;
+    position: relative;
+    display: inline-block;
+  }
+  #site-navigation nav #site-navigation-list #mobile-nav-icon {
+    display: none;
+  }
+  #site-navigation nav #site-navigation-list .sub-nav {
+    position: absolute;
+    right: 0;
+    background-color: white;
+    margin: 0;
+    text-align: left;
+    border: 1px solid #EAEAEA;
+    width: 200px;
+    box-shadow: 0 0 5px #E2E2E2;
+    border-radius: 3px;
+    z-index: 1;
+  }
+  #site-navigation nav #site-navigation-list .sub-nav li a:hover {
+    background-color: #F9F9F9;
+  }
+}
+@media (max-width: 700px) {
+  #site-navigation nav #site-navigation-list #mobile-nav-dropdown {
+    display: none;
+    position: absolute;
+    right: 0;
+    min-width: 250px;
+    border-radius: 3px;
+    background-color: rgba(0, 25, 33, 0.9);
+    z-index: 1;
+    text-align: center;
+  }
+  #site-navigation nav #site-navigation-list .top-level-nav-link {
+    padding: 10px 20px;
+    display: block;
+  }
+  #site-navigation nav #site-navigation-list .top-level-nav-link:hover {
+    background-color: rgba(0, 0, 0, 0.75);
+  }
+  #site-navigation nav #site-navigation-list .sub-nav {
+    background-color: rgba(0, 64, 84, 0.7);
+    margin: 0;
+  }
+  #site-navigation nav #site-navigation-list .sub-nav li a {
+    color: white;
+  }
+  #site-navigation nav #site-navigation-list .sub-nav li a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+  }
+}
+@media (max-width: 500px) {
+  #site-navigation nav #site-navigation-list #mobile-nav-dropdown {
+    min-width: 100%;
+  }
+}
+/* -----------------------------
 POST
 ----------------------------- */
 #post-loop {
   max-width: 600px;
   width: 100%;
+}
+/* Needed to allow the sidebar to move smoothly as it changes from fixed to absolute positions */
+@media (min-width: 959px) {
+  #post-loop {
+    float: left;
+  }
+}
+/* Center the post loop when the banner is hidden */
+@media (max-width: 959px) {
+  #post-loop {
+    margin: 0 auto;
+  }
 }
 .article-container,
 .loading-img,
@@ -6516,6 +6671,12 @@ SIDEBAR
   border-radius: 3px;
   width: 280px;
 }
+/* Hide the sidebar to allow the banner to be full centered */
+@media (max-width: 959px) {
+  #sidebar {
+    display: none;
+  }
+}
 .portfolio-sidebar h1,
 .portfolio-sidebar ul {
   padding: 0;
@@ -6537,149 +6698,6 @@ SIDEBAR
 .portfolio-sidebar ul .active-portfolio-item a {
   color: #00beff;
   text-decoration: underline;
-}
-/* -----------------------------
-SITE NAVIGATION
------------------------------ */
-#site-navigation.absolute-nav {
-  position: absolute;
-  width: 100%;
-}
-#site-navigation {
-  background-color: rgba(0, 25, 33, 0.9);
-}
-#site-navigation .display-table-cell {
-  vertical-align: middle;
-}
-#site-navigation nav #mobile-nav-dropdown,
-#site-navigation nav #site-navigation-list {
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
-}
-#site-navigation nav #site-navigation-list .top-level-nav-link,
-#site-navigation nav #site-navigation-list h2 a,
-#site-navigation nav #site-navigation-list #mobile-nav-icon {
-  color: white;
-}
-#site-navigation nav #site-navigation-list .top-level-nav-link:hover,
-#site-navigation nav #site-navigation-list h2 a:hover,
-#site-navigation nav #site-navigation-list #mobile-nav-icon:hover {
-  color: white;
-}
-#site-navigation nav #site-navigation-list h2 a:hover,
-#site-navigation nav #site-navigation-list #mobile-nav-icon:hover {
-  color: #EAEAEA;
-}
-#site-navigation nav #site-navigation-list h2 a,
-#site-navigation nav #site-navigation-list #mobile-nav-icon {
-  padding: 20px 0;
-  display: inline-block;
-}
-#site-navigation nav #site-navigation-list #site-navigation-items {
-  text-align: right;
-}
-#site-navigation nav #site-navigation-list .active-sub-nav {
-  text-decoration: underline;
-}
-#site-navigation nav #site-navigation-list .dimmed-nav-item {
-  color: #EAEAEA;
-}
-#site-navigation nav #site-navigation-list #site-logo h2 {
-  margin: 0;
-  font-size: 1.3em;
-  font-weight: 400;
-}
-#site-navigation nav #site-navigation-list #site-logo h2 a:hover {
-  text-decoration: none;
-}
-#site-navigation nav #site-navigation-list .sub-nav {
-  list-style: none;
-  padding: 0;
-  display: none;
-}
-#site-navigation nav #site-navigation-list .sub-nav li a {
-  display: block;
-  padding: 10px 20px;
-}
-@media (max-height: 600px) {
-  #site-navigation.fixed-nav {
-    width: 100%;
-    position: absolute;
-  }
-}
-@media (min-height: 600px) {
-  #site-navigation.fixed-nav {
-    z-index: 9999;
-    top: 0;
-    width: 100%;
-    position: fixed;
-  }
-}
-@media (min-width: 700px) {
-  #site-navigation nav #site-navigation-list .top-level-nav-link {
-    padding: 10px 0;
-    display: inline-block;
-  }
-  #site-navigation nav #site-navigation-list .site-navigation-item {
-    width: 125px;
-    text-align: right;
-    position: relative;
-    display: inline-block;
-  }
-  #site-navigation nav #site-navigation-list #mobile-nav-icon {
-    display: none;
-  }
-  #site-navigation nav #site-navigation-list .sub-nav {
-    position: absolute;
-    right: 0;
-    background-color: white;
-    margin: 0;
-    text-align: left;
-    border: 1px solid #EAEAEA;
-    width: 200px;
-    box-shadow: 0 0 5px #E2E2E2;
-    border-radius: 3px;
-    z-index: 1;
-  }
-  #site-navigation nav #site-navigation-list .sub-nav li a:hover {
-    background-color: #F9F9F9;
-  }
-}
-@media (max-width: 700px) {
-  #site-navigation nav #site-navigation-list #mobile-nav-dropdown {
-    display: none;
-    position: absolute;
-    right: 0;
-    min-width: 250px;
-    border-radius: 3px;
-    background-color: rgba(0, 25, 33, 0.9);
-    z-index: 1;
-    text-align: center;
-  }
-  #site-navigation nav #site-navigation-list .top-level-nav-link {
-    padding: 10px 20px;
-    display: block;
-  }
-  #site-navigation nav #site-navigation-list .top-level-nav-link:hover {
-    background-color: rgba(0, 0, 0, 0.75);
-  }
-  #site-navigation nav #site-navigation-list .sub-nav {
-    background-color: rgba(0, 64, 84, 0.7);
-    margin: 0;
-  }
-  #site-navigation nav #site-navigation-list .sub-nav li a {
-    color: white;
-  }
-  #site-navigation nav #site-navigation-list .sub-nav li a:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-    color: white;
-  }
-}
-@media (max-width: 500px) {
-  #site-navigation nav #site-navigation-list #mobile-nav-dropdown {
-    min-width: 100%;
-  }
 }
 /* -----------------------------
 BANNER
@@ -6981,18 +6999,5 @@ PROJECTS-PAGE
 @media (max-width: 650px) {
   #page-projects #projects-loop article {
     max-width: 100%;
-  }
-}
-@media (min-width: 959px) {
-  #post-loop {
-    float: left;
-  }
-}
-@media (max-width: 959px) {
-  #sidebar {
-    display: none;
-  }
-  #post-loop {
-    margin: 0 auto;
   }
 }

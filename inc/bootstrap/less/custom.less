@@ -1,0 +1,231 @@
+#less-vars {
+	height: @min-height-for-fixed-nav;	
+}
+
+p, ul, ol {
+	margin: 1em 0;
+}
+
+a {
+	cursor: pointer;	
+}
+
+//Used to make sure in page anchor links display the content below the fixed header
+a.anchor {
+    display: block;
+    position: relative;
+    visibility: hidden;
+    top: -@default-content-top-padding;
+}
+
+.wrap {
+	padding-left: @global-padding + 10;
+	padding-right: @global-padding + 10;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: @wrap-max-width;
+	width: 100%;
+	position: relative;
+}
+
+.display-table {
+	display: table;
+}
+
+.display-table-row {
+	display: table-row;
+}
+
+.display-table-cell {
+	display: table-cell;
+}
+
+.hide-without-javascript {
+	display: none;	
+}
+
+/* -----------------------------
+CONTENT
+----------------------------- */	
+	main {
+		padding-top: @default-content-top-padding;
+		padding-bottom: @global-padding;
+		
+		#main-wrap {
+			margin-top: @global-padding;
+		}
+	}
+	
+/* -----------------------------
+POST
+----------------------------- */	
+	#post-loop {
+		max-width: @post-loop-width;
+		width: 100%;
+		
+		article, .loading-img, #portfolio-nav {
+			margin-bottom: @global-padding;
+		}
+		
+		article, #portfolio-nav {
+			background-color: white;
+			border: 1px solid @content-border-color;
+			border-radius: 3px;
+			overflow: hidden;
+			width: 100%;
+		}
+		
+		#portfolio-nav {
+			text-align: center;
+			
+			#portfolio-nav-middle {
+				border-right: solid;
+			    border-left: solid;
+			    border-color: @content-border-color;
+			    border-width: 1px;
+			}
+			
+			a {
+				padding: @global-padding/2 0;
+				font-size: 0.9em;
+			}	
+			
+			a:hover {
+				background-color: #F7F7F7
+			}
+			
+			.active-portfolio {
+				background-color: @charliejackson-link;
+				color: white;	
+			}
+			
+			.active-portfolio:hover {
+				background-color: @charliejackson-link-hover;
+			}
+		}
+		
+		article {
+			header {
+				.post-featured-image {
+					width: 100%;
+					height: auto;
+				}
+				
+				h2 {
+					margin: 0;
+				}
+				
+				.post-date {
+					
+				}
+				
+				.header-title {
+					margin-top: @global-padding;
+				}
+			}
+			
+			.post-body {
+				margin-bottom: @content-padding;
+				margin-top: @content-padding;
+				
+				a {
+					text-decoration: underline;	
+				}
+			}
+			
+			footer {
+				padding-bottom: @content-padding;
+			    padding-top: @content-padding;
+			    border-top: 1px solid @content-border-color;
+			    background-color: #FCFCFC;
+			}
+		}
+		
+		.next-page-link {
+			 display: none;
+		}
+		
+		.loading-img {
+			margin-right: auto;
+		    display: none;
+		    margin-left: auto;
+		}
+	}
+
+/* -----------------------------
+SIDEBAR
+----------------------------- */
+	.absolute-sidebar {
+		position: absolute;
+		top: 0;
+		right: 0;
+		
+		#sidebar-container {
+			margin-right: @global-padding + 10;
+		    position: absolute;
+		    top: 0;
+		    right: 0; 
+		}
+	}
+	
+	.fixed-bottom-sidebar, .fixed-top-sidebar {
+		float: right;
+		width: @wrap-max-width - @post-loop-width - (@global-padding * 3) - 20;
+		
+		#sidebar-container {
+			position: fixed;
+		}
+	}
+	
+	.fixed-bottom-sidebar {		
+		#sidebar-container {
+			bottom: @global-padding;
+		}
+	}
+	
+	.fixed-top-sidebar {		
+		#sidebar-container {
+			top: @global-padding + @default-content-top-padding;
+		}
+	}
+	
+	#sidebar {
+		#sidebar-container {
+		    background-color: white;
+		    display: block;
+		    border: 1px solid #DEDEDE;
+		    border-radius: 3px;	
+		    width: @wrap-max-width - @post-loop-width - (@global-padding * 3) - 20;		    
+		}
+	}
+	
+	.portfolio-sidebar {
+		h1, ul {
+			padding: 0;	
+			margin: @global-padding;
+		}
+		
+		h1 {
+			line-height: 1;
+			font-size: 1.5em;
+		}
+		
+		ul {
+			list-style: none;
+			
+			li {
+				a {
+					color: #0E617D;
+				}
+				
+				a:hover {
+					color: @charliejackson-link-hover;
+				}
+			}
+			
+			.active-portfolio-item a {
+				color: @charliejackson-link-hover;
+				text-decoration: underline;
+			}
+		}	
+	}

@@ -19,8 +19,8 @@ a.anchor {
 }
 
 .wrap {
-	padding-left: @global-padding + 10;
-	padding-right: @global-padding + 10;
+	padding-left: @global-padding + @extra-padding-for-scrollbar;
+	padding-right: @global-padding + @extra-padding-for-scrollbar;
 	margin-left: auto;
 	margin-right: auto;
 	max-width: @wrap-max-width;
@@ -64,11 +64,11 @@ POST
 		width: 100%;
 	}
 	
-	article, .loading-img, #portfolio-nav {
+	.article-container, .loading-img, #portfolio-nav, #post-query-title {
 		margin-bottom: @global-padding;
 	}
 	
-	article, #portfolio-nav {
+	.article-container, #portfolio-nav, #post-query-title {
 		background-color: white;
 		border: 1px solid @content-border-color;
 		border-radius: 3px;
@@ -105,7 +105,12 @@ POST
 		}
 	}
 	
-	article {
+	.article-container {
+		img {
+			width: 100%;
+			height: auto;
+		}
+			
 		header {
 			.post-featured-image {
 				width: 100%;
@@ -142,11 +147,6 @@ POST
 				    margin: 0.5em 0 2em 0;
 				    font-size: 0.8em;
 				}
-			}
-			
-			img {
-				width: 100%;
-				height: auto;
 			}
 		}
 		

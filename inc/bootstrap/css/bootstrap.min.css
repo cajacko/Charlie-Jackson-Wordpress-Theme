@@ -6343,13 +6343,15 @@ POST
   max-width: 600px;
   width: 100%;
 }
-article,
+.article-container,
 .loading-img,
-#portfolio-nav {
+#portfolio-nav,
+#post-query-title {
   margin-bottom: 20px;
 }
-article,
-#portfolio-nav {
+.article-container,
+#portfolio-nav,
+#post-query-title {
   background-color: white;
   border: 1px solid #ececec;
   border-radius: 3px;
@@ -6379,37 +6381,37 @@ article,
 #portfolio-nav .active-portfolio:hover {
   background-color: #00beff;
 }
-article header .post-featured-image {
+.article-container img {
   width: 100%;
   height: auto;
 }
-article header h2 {
+.article-container header .post-featured-image {
+  width: 100%;
+  height: auto;
+}
+.article-container header h2 {
   margin: 0;
 }
-article header .header-title {
+.article-container header .header-title {
   margin-top: 20px;
 }
-article .post-body {
+.article-container .post-body {
   margin-bottom: 10px;
   margin-top: 10px;
 }
-article .post-body a {
+.article-container .post-body a {
   text-decoration: underline;
 }
-article .post-body .caption {
+.article-container .post-body .caption {
   width: 100%;
 }
-article .post-body .caption .caption-text {
+.article-container .post-body .caption .caption-text {
   font-style: italic;
   text-align: center;
   margin: 0.5em 0 2em 0;
   font-size: 0.8em;
 }
-article .post-body img {
-  width: 100%;
-  height: auto;
-}
-article footer {
+.article-container footer {
   padding-bottom: 10px;
   padding-top: 10px;
   border-top: 1px solid #ececec;
@@ -6889,6 +6891,29 @@ BANNER DESKTOP
   }
   #banner #banner-content-container #banner-content-wrap aside .banner-item {
     display: block;
+  }
+}
+/* -----------------------------
+PROJECTS-PAGE
+----------------------------- */
+#page-projects #main-wrap {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+#page-projects #projects-loop article {
+  max-width: 33.33333%;
+  width: 100%;
+  padding: 0 10px;
+  float: left;
+}
+@media (max-width: 900px) {
+  #page-projects #projects-loop article {
+    max-width: 50%;
+  }
+}
+@media (max-width: 650px) {
+  #page-projects #projects-loop article {
+    max-width: 100%;
   }
 }
 @media (min-width: 959px) {

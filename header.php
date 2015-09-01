@@ -45,5 +45,5 @@
 				<?php get_template_part('sections/site-navigation'); ?>
 			</header>
 			
-			<main>
+			<main<?php if(is_page('projects')): ?> id="page-projects"<?php endif; ?>>
 				<div id="main-wrap" class="wrap clearfix">

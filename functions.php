@@ -58,7 +58,10 @@ ENQUE STYLES AND SCRIPTS
 			wp_enqueue_script( 'charliejackson-portfolio-script', get_template_directory_uri()  . '/js/portfolio.js', array( 'jquery' )); //Add setup script
 		}
 		
-		if(!is_page('projects')) {
+		if(is_page('projects')) {
+			wp_enqueue_script( 'charliejackson-projects-script', get_template_directory_uri()  . '/js/projects.js', array( 'jquery' )); //Add setup script
+			wp_enqueue_script( 'charliejackson-masonry-script', get_template_directory_uri()  . '/js/masonry.js', array( 'jquery' )); //Add setup script
+		} else {
 			wp_enqueue_script( 'charliejackson-sidebar-script', get_template_directory_uri()  . '/js/sidebar.js', array( 'jquery' )); //Add setup script
 		}
 	}
@@ -330,6 +333,13 @@ FILTER ATTACHMENT OUTPUT
 	    return '<div class="caption">'
 	. do_shortcode( $content ) . '<p class="caption-text">' . $caption . '</p></div>';
 	}	
+
+/* -----------------------------
+BLOG PAGE TITLE
+----------------------------- */
+	function charliejackson_page_title() {
+		echo 'Category: Article';	
+	}
 		
 /* -----------------------------
 BOOTSTRAP PAGE NAV

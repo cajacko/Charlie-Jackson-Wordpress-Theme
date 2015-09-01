@@ -20,10 +20,10 @@
 	    setNewArticlesOpacitytoZero();
 	    $("#page-nav").remove(); 
 	    showLoadingImage();
-	    fadeInArticles();
     }
 	
     function onPageLoadOrResize () {
+	    fadeInArticles();
     }
     
     function windowScrollFunction() {		
@@ -47,7 +47,7 @@
 		}
 		
 		function loadMorePosts() {
-			if(!$('#no-more-posts').length && !loadingPosts){
+			if(!$('#no-more-posts').length && !loadingPosts && $('.next-page-link a').length){
 				var url = $('.next-page-link a').last().attr('href');
 				
 				if(url.indexOf("?action=load_posts") == -1){
@@ -80,7 +80,7 @@
 		
 			$('article').each( function(i){ 
 	            var articleTop = $(this).offset().top;
-	 
+
 	            if(scrollBottom > articleTop){
 	                $(this).animate({'opacity':'1'},500);
 	                

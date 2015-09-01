@@ -37,7 +37,7 @@
 					</div>
 				</div>
 			</aside>
-			<footer><a id="go-to-blog" href="#site-navigation"><span class="blog-text">Blog</span><i class="fa fa-angle-double-down"></i></a></footer>
 		</div>
+		<footer><a id="go-to-blog" href="#site-navigation"><span class="blog-text">Blog</span><i class="fa fa-angle-double-down"></i></a></footer>
 	</div>
 </section>

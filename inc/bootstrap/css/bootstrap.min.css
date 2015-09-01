@@ -6796,22 +6796,22 @@ BANNER
 #banner #banner-content-container #banner-content-wrap aside #banner-aside-wrap #follow-me ul .follow-button a {
   color: white;
 }
-#banner #banner-content-container #banner-content-wrap footer {
+#banner #banner-content-container footer {
   width: 100%;
   line-height: 1;
   z-index: 1;
 }
-#banner #banner-content-container #banner-content-wrap footer a {
+#banner #banner-content-container footer a {
   display: block;
   margin: 0 auto;
   width: 100px;
   text-decoration: none;
 }
-#banner #banner-content-container #banner-content-wrap footer a .blog-text {
+#banner #banner-content-container footer a .blog-text {
   display: block;
   font-size: 1.3em;
 }
-#banner #banner-content-container #banner-content-wrap footer a i {
+#banner #banner-content-container footer a i {
   font-size: 4em;
 }
 /* -----------------------------

@@ -13,7 +13,7 @@
 		
 		<footer>
 			<div class="wrap">
-				<span class="post-date"><?php the_date(); ?></span>
+				<span class="post-date"><?php echo get_the_date(); ?></span>
 			</div>
 		</footer>
 	</div>

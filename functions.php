@@ -57,6 +57,10 @@ ENQUE STYLES AND SCRIPTS
 		if(is_page('portfolio')) {
 			wp_enqueue_script( 'charliejackson-portfolio-script', get_template_directory_uri()  . '/js/portfolio.js', array( 'jquery' )); //Add setup script
 		}
+		
+		if(!is_page('projects')) {
+			wp_enqueue_script( 'charliejackson-sidebar-script', get_template_directory_uri()  . '/js/sidebar.js', array( 'jquery' )); //Add setup script
+		}
 	}
 	
 	add_action( 'wp_enqueue_scripts', 'charliejackson_scripts' ); //Add action

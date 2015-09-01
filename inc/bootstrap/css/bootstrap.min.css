@@ -6343,82 +6343,82 @@ POST
   max-width: 600px;
   width: 100%;
 }
-#post-loop article,
-#post-loop .loading-img,
-#post-loop #portfolio-nav {
+article,
+.loading-img,
+#portfolio-nav {
   margin-bottom: 20px;
 }
-#post-loop article,
-#post-loop #portfolio-nav {
+article,
+#portfolio-nav {
   background-color: white;
   border: 1px solid #ececec;
   border-radius: 3px;
   overflow: hidden;
   width: 100%;
 }
-#post-loop #portfolio-nav {
+#portfolio-nav {
   text-align: center;
 }
-#post-loop #portfolio-nav #portfolio-nav-middle {
+#portfolio-nav #portfolio-nav-middle {
   border-right: solid;
   border-left: solid;
   border-color: #ececec;
   border-width: 1px;
 }
-#post-loop #portfolio-nav a {
+#portfolio-nav a {
   padding: 10px 0;
   font-size: 0.9em;
 }
-#post-loop #portfolio-nav a:hover {
+#portfolio-nav a:hover {
   background-color: #F7F7F7;
 }
-#post-loop #portfolio-nav .active-portfolio {
+#portfolio-nav .active-portfolio {
   background-color: #008fbf;
   color: white;
 }
-#post-loop #portfolio-nav .active-portfolio:hover {
+#portfolio-nav .active-portfolio:hover {
   background-color: #00beff;
 }
-#post-loop article header .post-featured-image {
+article header .post-featured-image {
   width: 100%;
   height: auto;
 }
-#post-loop article header h2 {
+article header h2 {
   margin: 0;
 }
-#post-loop article header .header-title {
+article header .header-title {
   margin-top: 20px;
 }
-#post-loop article .post-body {
+article .post-body {
   margin-bottom: 10px;
   margin-top: 10px;
 }
-#post-loop article .post-body a {
+article .post-body a {
   text-decoration: underline;
 }
-#post-loop article .post-body .caption {
+article .post-body .caption {
   width: 100%;
 }
-#post-loop article .post-body .caption .caption-text {
+article .post-body .caption .caption-text {
   font-style: italic;
   text-align: center;
   margin: 0.5em 0 2em 0;
   font-size: 0.8em;
 }
-#post-loop article .post-body img {
+article .post-body img {
   width: 100%;
   height: auto;
 }
-#post-loop article footer {
+article footer {
   padding-bottom: 10px;
   padding-top: 10px;
   border-top: 1px solid #ececec;
   background-color: #FCFCFC;
 }
-#post-loop .next-page-link {
+.next-page-link {
   display: none;
 }
-#post-loop .loading-img {
+.loading-img {
   margin-right: auto;
   display: none;
   margin-left: auto;

@@ -1,9 +1,14 @@
-(function($) {
+( function( $ ) {
 
-    $(document).ready(documentReadyFunction);
-    $(window).resize(windowResizeFunction);
-    $(window).scroll(windowScrollFunction);
+    $( document ).ready( documentReadyFunction );
+    $( window ).resize( windowResizeFunction );
+    $( window ).scroll( windowScrollFunction );
 	
+	/**
+	 * Set global variables which are used by the 
+	 * various functions so that value's don't 
+	 * have to be constantly recalculated.
+	 */
 	var lastScrollTop = 0;
 	var sidebarTopPosition = 0;
 	var globalPadding = 20;
@@ -16,7 +21,6 @@
 	var isHeightTooSmallForFixedNav = false;
 
     function documentReadyFunction() {
-        // functions for document ready
         onPageLoadOrResize();
         onPageLoad();
     }
@@ -26,7 +30,7 @@
     }
 
     function onPageLoad() {
-	    twitterTimeline(true);
+	    twitterTimeline( true );
     }
 	
     function onPageLoadOrResize () {
@@ -36,7 +40,11 @@
     }
     
     function windowScrollFunction() {
-	    if(areGlobalVarsSet) {
+	    /**
+		 * Make sure the global variables are set before positioning 
+		 * the sidebar. Otherwise weird things may happen.
+		 */
+	    if( areGlobalVarsSet ) {
 		    positionSidebar();
 		}	   
 	}
@@ -44,107 +52,142 @@
     /* -----------------------------
 	SUPPORT FUNCTIONS
 	----------------------------- */
+		/**
+		 * Define the global variables
+		 */
 		function setGlobalVars() {
-		    globalPadding = $("main").css('padding-bottom');
-		    globalPadding = parseInt(globalPadding);		    
-		    siteNavHeight = $("#site-navigation").outerHeight();		    
-		    windowHeight = $(window).height();	
-		    windowWidth = $(window).width();	    
-		    areGlobalVarsSet = true;		    
+		    globalPadding = $( "main" ).css( 'padding-bottom' );
+		    globalPadding = parseInt( globalPadding );	
+		    	    
+		    siteNavHeight = $( "#site-navigation" ).outerHeight();
+		    	    
+		    windowHeight = $( window ).height();	
+		    windowWidth = $( window ).width();	  
+		      
+		    wrapMaxWidth = $( ".wrap" ).css( 'max-width' );
+		    wrapMaxWidth = parseInt( wrapMaxWidth );
 		    
-		    wrapMaxWidth = $(".wrap").css('max-width');
-		    wrapMaxWidth = parseInt(wrapMaxWidth);
-		    
-		    minHeightForFixedNav = $('#less-vars').css('height');
-		    minHeightForFixedNav = parseInt(minHeightForFixedNav);
+		    minHeightForFixedNav = $( '#less-vars' ).css( 'height' );
+		    minHeightForFixedNav = parseInt( minHeightForFixedNav );
 
-		    if(windowHeight < minHeightForFixedNav) {
+		    if( windowHeight < minHeightForFixedNav ) {
 			    isHeightTooSmallForFixedNav = true;
 			} else {
 				isHeightTooSmallForFixedNav = false;
 			}
 			
-			$('.sub-nav').hide();
+			$( '.sub-nav' ).hide();
+			
+			areGlobalVarsSet = true;
 		}
 		
+		/**
+		 * Position the sidebar so that it is either at the 
+		 * top of the post loop, fixed to the top or fixed 
+		 * to the bottom. Depending on the scroll position 
+		 * and direction.
+		 */
 		function positionSidebar() {
-			if(windowWidth >= wrapMaxWidth) {
-			    var scroll = $(window).scrollTop();
+			if( windowWidth >= wrapMaxWidth ) {
+			    var scroll = $( window ).scrollTop();
 			    var scrollBottom = scroll + windowHeight;
 			    
-			    var sidebarHeight = $("#sidebar-container").outerHeight();
-			    var totalSidebarHeight = sidebarHeight + siteNavHeight + (globalPadding * 2);
+			    var sidebarHeight = $( "#sidebar-container" ).outerHeight();
+			    var totalSidebarHeight = sidebarHeight + siteNavHeight + ( globalPadding * 2 );
 			    
-			    var sidebarPosition = $("#sidebar").offset();
+			    var sidebarPosition = $( "#sidebar" ).offset();
 			    var sidebarTop = sidebarPosition['top'];
 			    
-			    var fixedToBottomTopPosition = scrollBottom - sidebarTop - sidebarHeight - globalPadding; //Correct
-			    var fixedToTopTopPosisiton = scroll - sidebarTop + siteNavHeight + globalPadding; //Correct
+			    var fixedToBottomTopPosition = scrollBottom - sidebarTop - sidebarHeight - globalPadding;
+			    var fixedToTopTopPosisiton = scroll - sidebarTop + siteNavHeight + globalPadding;
 			    
-			    var bottomGap = scrollBottom - sidebarTop - sidebarHeight - sidebarTopPosition - globalPadding; //Correct
-			    var topGap = sidebarTopPosition - (scroll - sidebarTop) - siteNavHeight - globalPadding;
+			    var bottomGap = scrollBottom - sidebarTop - sidebarHeight - sidebarTopPosition - globalPadding;
+			    var topGap = sidebarTopPosition - ( scroll - sidebarTop ) - siteNavHeight - globalPadding;
 			    
-			    if(isHeightTooSmallForFixedNav) {
+			    if( isHeightTooSmallForFixedNav ) {
 				    topGap = topGap + siteNavHeight;
 				    fixedToTopTopPosisiton = fixedToTopTopPosisiton - siteNavHeight;
 				}
-			        
-			    if(fixedToTopTopPosisiton <= 0) {
-					$("#sidebar").addClass('absolute-sidebar').removeClass('fixed-bottom-sidebar').removeClass('fixed-top-sidebar');
-					$("#sidebar-container").css("top", 'auto').css("bottom", "auto");
+			    
+			    /**
+				 * Make sure there is never a visible gap between the top 
+				 * of the post loop and the top of the sidebar
+				 */
+			    if( fixedToTopTopPosisiton <= 0 ) {
+					$( "#sidebar" ).addClass( 'absolute-sidebar' ).removeClass( 'fixed-bottom-sidebar' ).removeClass( 'fixed-top-sidebar' );
+					$( "#sidebar-container" ).css( "top", 'auto' ).css( "bottom", "auto" );
 					sidebarTopPosition = 0;
-				} else if(totalSidebarHeight < windowHeight || topGap >= 0) {
-					if(isHeightTooSmallForFixedNav) {
+				} 
+				/**
+				 * Make sure the gap between the bottom of the site nav and 
+				 * the top of the sidebar can not be bigger than the global 
+				 * padding
+				 */
+				else if( totalSidebarHeight < windowHeight || topGap >= 0 ) {
+					if( isHeightTooSmallForFixedNav ) {
 						var topOffset = globalPadding;
 					} else {
 						var topOffset = globalPadding + siteNavHeight;
 					}
 						
-					$("#sidebar").removeClass('absolute-sidebar').removeClass('fixed-bottom-sidebar').addClass('fixed-top-sidebar');
-					$("#sidebar-container").css("top", topOffset + "px").css("bottom", "auto");
+					$( "#sidebar" ).removeClass( 'absolute-sidebar' ).removeClass( 'fixed-bottom-sidebar' ).addClass( 'fixed-top-sidebar' );
+					$( "#sidebar-container" ).css( "top", topOffset + "px" ).css( "bottom", "auto" );
 					sidebarTopPosition = fixedToTopTopPosisiton;
-				} else if((bottomGap >= 0 && scroll > lastScrollTop) || ($("#sidebar").hasClass("fixed-bottom-sidebar") && scroll > lastScrollTop)) {
-					$("#sidebar").removeClass('absolute-sidebar').addClass('fixed-bottom-sidebar').removeClass('fixed-top-sidebar');
-					$("#sidebar-container").css("top", 'auto').css("bottom", globalPadding + "px");
+				} 
+				/**
+				 * As long as the sidebar is tall enough, make sure the gap 
+				 * between the bottom of the sidebar and the bottom of the 
+				 * window is never bigger than the global padding
+				 */
+				else if( ( bottomGap >= 0 && scroll > lastScrollTop ) || ( $( "#sidebar" ).hasClass( "fixed-bottom-sidebar" ) && scroll > lastScrollTop ) ) {
+					$( "#sidebar" ).removeClass( 'absolute-sidebar' ).addClass( 'fixed-bottom-sidebar' ).removeClass( 'fixed-top-sidebar' );
+					$( "#sidebar-container" ).css( "top", 'auto' ).css( "bottom", globalPadding + "px" );
 					sidebarTopPosition = fixedToBottomTopPosition;
-				} else {
-					$("#sidebar-container").css("top", sidebarTopPosition + 'px').css("bottom", "auto");
-					$("#sidebar").addClass('absolute-sidebar').removeClass('fixed-bottom-sidebar').removeClass('fixed-top-sidebar');
+				} 
+				/**
+				 * Otherwise, fix the position of the sidebar and allow the user to scroll up and down it freely.
+				 */
+				else {
+					$( "#sidebar-container" ).css( "top", sidebarTopPosition + 'px' ).css( "bottom", "auto" );
+					$( "#sidebar" ).addClass( 'absolute-sidebar' ).removeClass( 'fixed-bottom-sidebar' ).removeClass( 'fixed-top-sidebar' );
 				}
 				
 				lastScrollTop = scroll;
 			}
 		}
 		
+		/**
+		 * Pad the top of the main element so that all the spacing 
+		 * is consisent. Also set all the anchors to be offset by 
+		 * enough so that the anchor links will display with the 
+		 * correct amount of spacing.
+		 */
 		function topPaddingForFixedNavConpensation() {
 			var anchorHeight = siteNavHeight + globalPadding;
-	  		$("main").css("padding-top", siteNavHeight);
-	  		$(".anchor").css("top", -anchorHeight);
+	  		$( "main" ).css( "padding-top", siteNavHeight );
+	  		$( ".anchor" ).css( "top", -anchorHeight );
 		}
 		
-		function twitterTimeline(callback) {
-	    	var articleHeight = $("article").height();
-	    	
-	    	if (articleHeight > 2500 ) {
-	    		articleHeight = 2500;
-	    	}
-	    	
+		/**
+		 * Display the Twitter Timeline
+		 */
+		function twitterTimeline( callback ) {
 	    	articleHeight = 1500;
 	    	
-	    	$(".twitter-timeline").height(articleHeight).attr("height", articleHeight);
+	    	$( ".twitter-timeline" ).height( articleHeight ).attr( "height", articleHeight );
 	    	
-	    	if(callback) {
-	    		!function(d,s,id){
-		    		var js,fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location)?'http':'https';
+	    	if( callback ) {
+	    		!function( d,s,id ){
+		    		var js,fjs = d.getElementsByTagName( s )[0], p = /^http:/.test( d.location ) ? 'http' : 'https';
 		    		
-		    		if(!d.getElementById(id)) {
-		    			js = d.createElement(s);
+		    		if( !d.getElementById( id ) ) {
+		    			js = d.createElement( s );
 		    			js.id = id;
 		    			js.src = p + "://platform.twitter.com/widgets.js";
-		    			fjs.parentNode.insertBefore(js,fjs);
+		    			fjs.parentNode.insertBefore( js,fjs );
 		    		}
-		    	}(document,"script","twitter-wjs");
+		    	} ( document,"script","twitter-wjs" );
 	    	}
 	    }	
 
-})(jQuery);
+}) ( jQuery );

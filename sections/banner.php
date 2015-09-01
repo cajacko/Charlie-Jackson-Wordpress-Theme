@@ -46,6 +46,6 @@
 			</aside>
 		</div>
 		
-		<footer><a id="go-to-blog" href="#site-navigation"><span class="blog-text">Blog</span><i class="fa fa-angle-double-down"></i></a></footer>
+		<footer><a id="go-to-blog" class="animate-scroll" href="#site-navigation"><span class="blog-text">Blog</span><i class="fa fa-angle-double-down"></i></a></footer>
 	</div>
 </section>

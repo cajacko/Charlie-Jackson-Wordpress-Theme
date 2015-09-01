@@ -3,7 +3,7 @@
 		<h1>Portfolio</h1>
 		
 		<ul>
-			<li><a class="portfolio-link" href="#top-of-page">Top of page</a></li>
+			<li><a class="portfolio-link animate-scroll" href="#top-of-page">Top of page</a></li>
 			
 			<?php $count = 0; ?>
 				
@@ -11,7 +11,7 @@
 					
 				<li id="nav-post-<?php the_ID(); ?>"<?php charliejackson_portfolio_affix_nav_classes($count); ?>>
 					
-					<a class="portfolio-link" href="#post-<?php the_ID(); ?>"><?php the_title(); ?></a>
+					<a class="portfolio-link animate-scroll" href="#post-<?php the_ID(); ?>"><?php the_title(); ?></a>
 					
 				</li>
 				

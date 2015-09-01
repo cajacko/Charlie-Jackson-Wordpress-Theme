@@ -1,37 +1,21 @@
-(function($) {
+( function( $ ) {
 
-    $(document).ready(documentReadyFunction);
-    $(window).resize(windowResizeFunction);
-    $(window).scroll(windowScrollFunction);
-	
-	var mobileView = false;
-
-    function documentReadyFunction() {
-        // functions for document ready
-        onPageLoadOrResize();
-        onPageLoad();
-    }
-
-    function windowResizeFunction() {
-        onPageLoadOrResize();
-    }
-
-    function onPageLoad() {
-    }
+    $( document ).ready( onPageLoadOrResize );
+    $( window ).resize( onPageLoadOrResize );
 	
     function onPageLoadOrResize () {
-	    if($(window).width() > 600) {
-		    $('#projects-loop').masonry({
+	    /**
+		 * If the window is bigger than 600px wide then activate 
+		 * the masonry plugin. Otherwise destroy the all effects 
+		 * it may have had.
+		 */
+	    if( $( window ).width() > 600 ) {
+		    $( '#projects-loop' ).masonry({
 				itemSelector: 'article'
 			});
 		} else {
-			$('#projects-loop').masonry('destroy');
+			$( '#projects-loop' ).masonry( 'destroy' );
 		}
     }
     
-    /* -----------------------------
-	SUPPORT FUNCTIONS
-	----------------------------- */
-		
-
-})(jQuery);
+}) ( jQuery );

@@ -7,11 +7,11 @@
 					<li class="site-navigation-item site-navigation-element">
 						<a class="top-level-nav-link">Projects <i class="fa fa-caret-down hide-without-javascript"></i></a>
 						<ul class="sub-nav">
-							<li><a href="">Remember When</a></li>
-							<li><a href="">Nine Studios</a></li>
-							<li><a href="">Life Tree</a></li>
-							<li><a href="">Nineline</a></li>
-							<li><a href="">All</a></li>
+							<li><a href="<?php echo home_url(); ?>/projects/remember-when">Remember When</a></li>
+							<li><a href="<?php echo home_url(); ?>/projects/nine-studios">Nine Studios</a></li>
+							<li><a href="<?php echo home_url(); ?>/projects/life-tree">Life Tree</a></li>
+							<li><a href="<?php echo home_url(); ?>/projects/nineline">Nineline</a></li>
+							<li><a href="<?php echo home_url(); ?>/projects">All</a></li>
 						</ul>
 					</li>
 					<li class="site-navigation-item site-navigation-element">
@@ -19,8 +19,8 @@
 						<ul class="sub-nav">
 							<li><a target="_blank" href="<?php echo get_template_directory_uri(); ?>/inc/media/cv.pdf">CV</a></li>
 							<li><a href="<?php echo home_url(); ?>/portfolio">Portfolio</a></li>
-							<li><a href="">Personal Statement</a></li>
-							<li><a href="">Email Me</a></li>
+							<li><a target="_blank" href="http://uk.linkedin.com/in/charliejackson9">LinkedIn</a></li>
+							<li><a href="mailto:contact@charliejackson.com">Email Me</a></li>
 						</ul>
 					</li>
 					<li class="site-navigation-item site-navigation-element">

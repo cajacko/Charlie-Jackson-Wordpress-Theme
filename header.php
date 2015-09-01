@@ -27,6 +27,7 @@
 			<meta id="less-vars">
 			<link rel="author" href="http://charliejackson.com">
 			<link rel="profile" href="http://gmpg.org/xfn/11">
+			<link rel="shortcut icon" href="<?php echo get_stylesheet_directory_uri(); ?>/inc/media/favicon.ico" />
 			<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 			<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/inc/font-awesome/css/font-awesome.min.css">
 	

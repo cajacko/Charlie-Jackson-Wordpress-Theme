@@ -36,6 +36,7 @@ ADD THEME SUPPORT
 	add_image_size( 'width-3500', 3500 );
 	add_image_size( 'width-4000', 4000 );
 	add_post_type_support( "page", "excerpt" );
+	add_theme_support( 'post-formats', array('image', 'video', 'gallery', 'link', 'aside', 'quote', 'status', 'audio', 'chat') );
 
 /* -----------------------------
 ENQUE STYLES AND SCRIPTS
@@ -353,6 +354,32 @@ BLOG PAGE TITLE
 		}
 		
 		echo $string;	
+	}
+
+/* -----------------------------
+GET THE CONTENT WITH FORMATTING	
+----------------------------- */	
+	function get_the_content_with_formatting ($more_link_text = '(more...)', $stripteaser = 0, $more_file = '') {
+		$content = get_the_content($more_link_text, $stripteaser, $more_file);
+		$content = apply_filters('the_content', $content);
+		$content = str_replace(']]>', ']]&gt;', $content);
+		return $content;
+	}
+	
+/* -----------------------------
+POST FORMAT FUNCTION
+----------------------------- */	
+	function charliejackson_the_video() {
+		preg_match ( "/<div class=\"embed-responsive embed-responsive-16by9\"><iframe.*<\/div>/" , get_the_content_with_formatting(), $match);
+		
+		echo $match[0];
+	}
+	
+	function charliejackson_the_video_content() {
+		$content = preg_replace ( "/<p><div class=\"embed-responsive embed-responsive-16by9\"><iframe.*<\/div><\/p>/" , "" , get_the_content_with_formatting());
+		$content = preg_replace ( "/<div class=\"embed-responsive embed-responsive-16by9\"><iframe.*<\/div>/" , "" , $content);
+		echo $content;
+		
 	}
 		
 /* -----------------------------

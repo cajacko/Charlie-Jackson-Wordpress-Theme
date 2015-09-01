@@ -6336,6 +6336,12 @@ main {
 main #main-wrap {
   margin-top: 20px;
 }
+@media (max-width: 550px) {
+  #main-wrap {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
 /* -----------------------------
 POST
 ----------------------------- */
@@ -6908,11 +6914,23 @@ PROJECTS-PAGE
   padding-left: 20px;
   padding-right: 20px;
 }
+@media (max-width: 550px) {
+  #page-projects #main-wrap {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
 #page-projects #projects-loop article {
   max-width: 33.33333%;
   width: 100%;
   padding: 0 10px;
   float: left;
+}
+@media (max-width: 550px) {
+  #page-projects #projects-loop article {
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
 @media (max-width: 900px) {
   #page-projects #projects-loop article {

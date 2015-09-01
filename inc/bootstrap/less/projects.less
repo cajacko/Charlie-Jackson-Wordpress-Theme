@@ -8,6 +8,13 @@ PROJECTS-PAGE
 			padding-right: @global-padding;
 		}
 		
+		@media (max-width: @mobile-width) {
+			#main-wrap {
+				padding-left: 0;
+				padding-right: 0;
+			}
+		}
+		
 		#projects-loop {
 			article {
 				max-width: 33.33333%;
@@ -15,6 +22,13 @@ PROJECTS-PAGE
 				padding: 0 @global-padding/2;
 				float: left;
 			}	
+			
+			@media (max-width: @mobile-width) {
+				article {
+					padding-left: 0;
+					padding-right: 0;
+				}
+			}
 		}
 	}
 	

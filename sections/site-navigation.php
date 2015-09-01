@@ -9,7 +9,6 @@
 						<ul class="sub-nav">
 							<li><a href="<?php echo home_url(); ?>/projects/remember-when">Remember When</a></li>
 							<li><a href="<?php echo home_url(); ?>/projects/nine-studios">Nine Studios</a></li>
-							<li><a href="<?php echo home_url(); ?>/projects/life-tree">Life Tree</a></li>
 							<li><a href="<?php echo home_url(); ?>/projects/nineline">Nineline</a></li>
 							<li><a href="<?php echo home_url(); ?>/projects">All</a></li>
 						</ul>

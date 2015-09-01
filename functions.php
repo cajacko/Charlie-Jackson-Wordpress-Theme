@@ -338,7 +338,21 @@ FILTER ATTACHMENT OUTPUT
 BLOG PAGE TITLE
 ----------------------------- */
 	function charliejackson_page_title() {
-		echo 'Category: Article';	
+		$string = '';
+		
+		if(is_category()) {
+			$string .= 'Category: ';
+		} elseif(is_tag()) {
+			$string .= 'Tag: ';
+		}
+		
+		$string .= single_cat_title( '', false );
+		
+		if(is_paged()) {
+			$string .= ' <small>- Page: '.get_query_var('paged').'</small>';
+		}
+		
+		echo $string;	
 	}
 		
 /* -----------------------------

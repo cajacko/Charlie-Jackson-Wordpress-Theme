@@ -1,7 +1,7 @@
 <section id="post-loop">
 	
-	<?php if(!is_front_page()): ?>
-		<div id="post-query-title" class="wrap"><h1>Page</h1></div>
+	<?php if(is_category() || is_tag()): ?>
+		<div id="post-query-title" class="wrap"><h1><?php charliejackson_page_title(); ?></h1></div>
 	<?php endif; ?>
 
 	<?php get_template_part('sections/post-loop'); ?>

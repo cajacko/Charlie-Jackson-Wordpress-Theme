@@ -6358,6 +6358,13 @@ POST
   overflow: hidden;
   width: 100%;
 }
+#post-query-title h1 {
+  font-size: 1.5em;
+  margin: 20px 0;
+}
+#post-query-title h1 small {
+  color: #636262;
+}
 #portfolio-nav {
   text-align: center;
 }

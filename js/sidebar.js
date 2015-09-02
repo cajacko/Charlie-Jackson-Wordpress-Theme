@@ -31,6 +31,7 @@
 
     function onPageLoad() {
 	    twitterTimeline();
+	    $('#twitter-placeholder').addClass('javascript-enabled');
     }
 	
     function onPageLoadOrResize () {

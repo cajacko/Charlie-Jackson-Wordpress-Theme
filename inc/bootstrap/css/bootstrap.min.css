@@ -6672,9 +6672,13 @@ SIDEBAR
   width: 280px;
 }
 #sidebar #sidebar-container #twitter-placeholder {
-  margin: 20px;
+  padding: 20px;
   text-align: center;
   font-size: 1.5em;
+}
+#sidebar #sidebar-container #twitter-placeholder.javascript-enabled {
+  height: 600px;
+  padding-top: 280px;
 }
 /* Hide the sidebar to allow the banner to be full centered */
 @media (max-width: 959px) {

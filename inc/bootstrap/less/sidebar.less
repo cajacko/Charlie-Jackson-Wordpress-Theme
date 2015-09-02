@@ -41,7 +41,18 @@ SIDEBAR
 		    display: block;
 		    border: 1px solid #DEDEDE;
 		    border-radius: 3px;	
-		    width: @wrap-max-width - @post-loop-width - (@global-padding * 3) - 20;		    
+		    width: @wrap-max-width - @post-loop-width - (@global-padding * 3) - 20;	
+		    
+		    #twitter-placeholder {
+			    padding: @global-padding;
+			    text-align: center;
+			    font-size: 1.5em;
+			}
+			
+			#twitter-placeholder.javascript-enabled {
+				height: 600px;
+				padding-top: 280px;	
+			}
 		}
 	}
 	

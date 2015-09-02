@@ -30,7 +30,8 @@
     }
 
     function onPageLoad() {
-	    twitterTimeline( true );
+	    twitterTimeline();
+	    $('#twitter-placeholder').addClass('javascript-enabled');
     }
 	
     function onPageLoadOrResize () {
@@ -171,23 +172,20 @@
 		/**
 		 * Display the Twitter Timeline
 		 */
-		function twitterTimeline( callback ) {
-	    	articleHeight = 1500;
+		function twitterTimeline() {	    	
+    		!function( d,s,id ){
+	    		var js,fjs = d.getElementsByTagName( s )[0], p = /^http:/.test( d.location ) ? 'http' : 'https';
+	    		
+	    		if( !d.getElementById( id ) ) {
+	    			js = d.createElement( s );
+	    			js.id = id;
+	    			js.src = p + "://platform.twitter.com/widgets.js";
+	    			fjs.parentNode.insertBefore( js,fjs );
+	    			
+	    			console.log("Twitter set up");
+	    		}
+	    	} ( document,"script","twitter-wjs" );
 	    	
-	    	$( ".twitter-timeline" ).height( articleHeight ).attr( "height", articleHeight );
-	    	
-	    	if( callback ) {
-	    		!function( d,s,id ){
-		    		var js,fjs = d.getElementsByTagName( s )[0], p = /^http:/.test( d.location ) ? 'http' : 'https';
-		    		
-		    		if( !d.getElementById( id ) ) {
-		    			js = d.createElement( s );
-		    			js.id = id;
-		    			js.src = p + "://platform.twitter.com/widgets.js";
-		    			fjs.parentNode.insertBefore( js,fjs );
-		    		}
-		    	} ( document,"script","twitter-wjs" );
-	    	}
 	    }	
 
 }) ( jQuery );

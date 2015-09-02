@@ -113,8 +113,8 @@
 			var parentWidth = $( parent ).width();
 			var parentAspectRatio = parentHeight / parentWidth;
 			
-			var imageHeight = $( image ).height();
-			var imageWidth = $( image ).width();
+			var imageHeight = $( image ).attr('height');
+			var imageWidth = $( image ).attr('width');
 			var imageAspectRatio = imageHeight / imageWidth;
 			
 			/**

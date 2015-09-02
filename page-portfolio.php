@@ -60,7 +60,7 @@
 				$tax_query[] = array(
 					'taxonomy' => 'project-categories',
 					'field'    => 'slug',
-					'terms'    => 'design',
+					'terms'    => 'product-design',
 				);
 			}
 			

@@ -6671,6 +6671,11 @@ SIDEBAR
   border-radius: 3px;
   width: 280px;
 }
+#sidebar #sidebar-container #twitter-placeholder {
+  margin: 20px;
+  text-align: center;
+  font-size: 1.5em;
+}
 /* Hide the sidebar to allow the banner to be full centered */
 @media (max-width: 959px) {
   #sidebar {
@@ -6754,6 +6759,7 @@ BANNER
   top: 0px;
   margin-top: auto;
   margin-left: auto;
+  /* Default for mobile devices */
 }
 @media (max-width: 750px) {
   #banner #banner-img {

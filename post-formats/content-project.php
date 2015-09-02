@@ -16,7 +16,17 @@
 					
 				</div>
 				
-			<?php endif; ?>
+			<?php elseif (class_exists('MultiPostThumbnails')):
+				    MultiPostThumbnails::the_post_thumbnail(
+				        get_post_type(),
+				        'portfolio-image',
+				        $post->ID,
+				        'inline-image',
+				        '',
+				        true
+				    );
+				
+			endif; ?>
 			
 			<div class="header-title wrap">
 				<h2>

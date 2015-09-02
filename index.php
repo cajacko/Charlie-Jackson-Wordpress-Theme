@@ -2,20 +2,30 @@
 /**
  * The main template file.
  *
- * This is the most generic template file in a WordPress theme
- * and one of the two required files for a theme (the other being style.css).
- * It is used to display a page when nothing more specific matches a query.
- * E.g., it puts together the home page when no home.php file exists.
- * Learn more: http://codex.wordpress.org/Template_Hierarchy
- *
  * @package Charlie Jackson
  */
-
-	get_header();
-		
-		get_template_part('sections/post-loop-container');
-		get_template_part('sections/sidebar');			
-	
-	get_footer(); 
-
 ?>
+
+<?php get_header(); ?>
+	
+	<section id="post-loop">
+		<?php charliejackson_the_query_title(); ?>
+	
+		<?php get_template_part( 'sections/post-loop' ); ?>
+		
+		<?php 
+			/**
+			 * The pagination is placed outside of the post loop 
+			 * template so that it does not get loaded during an 
+			 * inifinite scroll request
+			 */
+			if( have_posts() ) { 
+				charliejackson_pagination(); 
+			}
+		?>
+		
+	</section>
+	
+	<?php get_template_part( 'sections/sidebar' ); ?>
+
+<?php get_footer(); ?>

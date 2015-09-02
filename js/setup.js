@@ -1,23 +1,11 @@
-(function($) {
+( function( $ ) {
 
-    $(document).ready(documentReadyFunction);
-    $(window).resize(windowResizeFunction);
-    $(window).scroll(windowScrollFunction);
+    $( document ).ready( documentReadyFunction );
+    $( window ).resize( windowResizeFunction );
 	
-	var lastScrollTop = 0;
-	var sidebarTopPosition = 0;
-	var globalPadding = 20;
-	var siteNavHeight = 50;
-	var windowHeight = 0;
-	var windowWidth = 0;
-	var wrapMaxWidth = 960;
-	var areGlobalVarsSet = false;
-	var minHeightForFixedNav = 600;
-	var isHeightTooSmallForFixedNav = false;
-	var mobileView = false;
+	var mobileView = false; // Global variable to define if the mobile view is displayed or not
 
     function documentReadyFunction() {
-        // functions for document ready
         onPageLoadOrResize();
         onPageLoad();
     }
@@ -27,189 +15,165 @@
     }
 
     function onPageLoad() {
-	    $("#page-nav").addClass('hidden'); 
+	    /**
+		 * Initiate the dropdown menus
+		 */
 	    dropDownMenus();
-	    twitterTimeline(true);
-
-	    $('.hide-without-javascript').removeClass('hide-without-javascript');
+		
+		/**
+		 * Hide everything that's only needed if JavaScript is disabled
+		 */
+	    $( '.hide-without-javascript' ).removeClass( 'hide-without-javascript' );
+	    
+	    animateScroll();
     }
 	
     function onPageLoadOrResize () {
 	    setGlobalVars();
-  		topPaddingForFixedNavConpensation();
-  		positionSidebar();
     }
-    
-    function windowScrollFunction() {
-	    if(areGlobalVarsSet) {
-		    positionSidebar();
-		}	   
-	}
     
     /* -----------------------------
 	SUPPORT FUNCTIONS
 	----------------------------- */
+		/**
+		 * Animate the scroll to the desired anchor
+		 */
+	    function animateScroll() {
+			var hashTagActive = ""; // Used to check if the function is already in progress
+			
+		    $( ".animate-scroll" ).click( function ( event ) {
+			    /**
+				 * If the function is not already in progress then run the 
+				 * function. Used to prevent freezing by clicking on a link 
+				 * several times.
+				 */
+		        if( hashTagActive != this.hash ) {
+		            event.preventDefault();
+		            
+		            /**
+			         * Calculate the position to scroll to
+			         */
+		            var dest = 0;
+		            
+		            if ( $( this.hash ).offset().top > $( document ).height() - $( window ).height() ) {
+		                dest = $( document ).height() - $( window ).height();
+		            } else {
+		                dest = $( this.hash ).offset().top;
+		            }
+		            
+		            /**
+			         * Go to the destination
+			         */
+		            $( 'html,body' ).animate( {
+		                scrollTop: dest
+		            }, 500, 'swing', function() {
+			            hashTagActive = ""; // When the animation is complete set the variable back to it's default value
+			        });
+			        
+		            hashTagActive = this.hash; // Set the variable as active so the function can't be ran at the same time as itself.
+		        }
+		    });
+		}
+		
+		/**
+		 * Set global variables that are used between various other functions.
+		 */
 		function setGlobalVars() {
-		    globalPadding = $("main").css('padding-bottom');
-		    globalPadding = parseInt(globalPadding);		    
-		    siteNavHeight = $("#site-navigation").outerHeight();		    
-		    windowHeight = $(window).height();	
-		    windowWidth = $(window).width();	    
-		    areGlobalVarsSet = true;		    
-		    
-		    wrapMaxWidth = $(".wrap").css('max-width');
-		    wrapMaxWidth = parseInt(wrapMaxWidth);
-		    
-		    minHeightForFixedNav = $('#less-vars').css('height');
-		    minHeightForFixedNav = parseInt(minHeightForFixedNav);
-
-		    if(windowHeight < minHeightForFixedNav) {
-			    isHeightTooSmallForFixedNav = true;
-			} else {
-				isHeightTooSmallForFixedNav = false;
-			}
-		    
-		    if($('#mobile-nav-icon').css("display") == 'none') {
+			/**
+			 * Is the mobile view being displayed
+			 */
+		    if( $( '#mobile-nav-icon' ).css( "display" ) == 'none' ) {
 		   		mobileView = false;
 		   	} else {
 			   	mobileView = true;
 			}
 			
-			$('.sub-nav').hide();
-			if(mobileView) {
-				$('#mobile-nav-dropdown').hide();	
+			/**
+			 * Toggle the mobile menu depending on whether the mobile view is being displayed.
+			 */
+			if( mobileView ) {
+				$( '#mobile-nav-dropdown' ).hide();	
 			} else {
-				$('#mobile-nav-dropdown').show();
+				$( '#mobile-nav-dropdown' ).show();
 			}
 		}
 		
-		function positionSidebar() {
-			if(windowWidth >= wrapMaxWidth) {
-			    var scroll = $(window).scrollTop();
-			    var scrollBottom = scroll + windowHeight;
-			    
-			    var sidebarHeight = $("#sidebar-container").outerHeight();
-			    var totalSidebarHeight = sidebarHeight + siteNavHeight + (globalPadding * 2);
-			    
-			    var sidebarPosition = $("#sidebar").offset();
-			    var sidebarTop = sidebarPosition['top'];
-			    
-			    var fixedToBottomTopPosition = scrollBottom - sidebarTop - sidebarHeight - globalPadding; //Correct
-			    var fixedToTopTopPosisiton = scroll - sidebarTop + siteNavHeight + globalPadding; //Correct
-			    
-			    var bottomGap = scrollBottom - sidebarTop - sidebarHeight - sidebarTopPosition - globalPadding; //Correct
-			    var topGap = sidebarTopPosition - (scroll - sidebarTop) - siteNavHeight - globalPadding;
-			    
-			    if(isHeightTooSmallForFixedNav) {
-				    topGap = topGap + siteNavHeight;
-				    fixedToTopTopPosisiton = fixedToTopTopPosisiton - siteNavHeight;
-				}
-			        
-			    if(fixedToTopTopPosisiton <= 0) {
-					$("#sidebar").addClass('absolute-sidebar').removeClass('fixed-bottom-sidebar').removeClass('fixed-top-sidebar');
-					$("#sidebar-container").css("top", 'auto').css("bottom", "auto");
-					sidebarTopPosition = 0;
-				} else if(totalSidebarHeight < windowHeight || topGap >= 0) {
-					if(isHeightTooSmallForFixedNav) {
-						var topOffset = globalPadding;
-					} else {
-						var topOffset = globalPadding + siteNavHeight;
-					}
-						
-					$("#sidebar").removeClass('absolute-sidebar').removeClass('fixed-bottom-sidebar').addClass('fixed-top-sidebar');
-					$("#sidebar-container").css("top", topOffset + "px").css("bottom", "auto");
-					sidebarTopPosition = fixedToTopTopPosisiton;
-				} else if((bottomGap >= 0 && scroll > lastScrollTop) || ($("#sidebar").hasClass("fixed-bottom-sidebar") && scroll > lastScrollTop)) {
-					$("#sidebar").removeClass('absolute-sidebar').addClass('fixed-bottom-sidebar').removeClass('fixed-top-sidebar');
-					$("#sidebar-container").css("top", 'auto').css("bottom", globalPadding + "px");
-					sidebarTopPosition = fixedToBottomTopPosition;
-				} else {
-					$("#sidebar-container").css("top", sidebarTopPosition + 'px').css("bottom", "auto");
-					$("#sidebar").addClass('absolute-sidebar').removeClass('fixed-bottom-sidebar').removeClass('fixed-top-sidebar');
-				}
-				
-				lastScrollTop = scroll;
-			}
-		}
-		
-		function topPaddingForFixedNavConpensation() {
-			var anchorHeight = siteNavHeight + globalPadding;
-	  		$("main").css("padding-top", siteNavHeight);
-	  		$(".anchor").css("top", -anchorHeight);
-		}
-		
+		/**
+		 * Initiate the dropdown menus for the main navigation
+		 */
 		function dropDownMenus() {
-			$('.site-navigation-item').hover(function(){
-				if(!mobileView) {
-					$('.top-level-nav-link').addClass('dimmed-nav-item').removeClass('active-sub-nav');
-					$('.fa-caret-up').removeClass('fa-caret-up').addClass('fa-caret-down');
-					$(this).find('.sub-nav').slideDown();
-					$(this).find('.fa-caret-down').removeClass('fa-caret-down').addClass('fa-caret-up');
-					$(this).find('.top-level-nav-link').removeClass('dimmed-nav-item').addClass('active-sub-nav');
+			/**
+			 * Toggle the dropdown menus when hovering 
+			 * over the menu items whilst not in a mobile 
+			 * view.
+			 */
+			$( '.site-navigation-item' ).hover( function() {
+				/**
+				 * On hover hide all the dropdowns but 
+				 * show the one for the current item
+				 */
+				if( !mobileView ) {
+					$( '.top-level-nav-link' ).addClass( 'dimmed-nav-item' ).removeClass( 'active-sub-nav' ); // Dim all top level nav items
+					$( '.fa-caret-up' ).removeClass( 'fa-caret-up' ).addClass( 'fa-caret-down' ); // Point all the nav arrows down
+					$(this).find( '.sub-nav' ).slideDown(); // Show the current dropdown menu
+					$(this).find( '.fa-caret-down' ).removeClass( 'fa-caret-down' ).addClass( 'fa-caret-up' ); // Change the current nav arrow to down
+					$(this).find( '.top-level-nav-link' ).removeClass( 'dimmed-nav-item' ).addClass( 'active-sub-nav' ); // Make sure the current nav item isn't dimmed
 				}
-			}, function(){
+				
+			}, function() {
+				/**
+				 * On hover off the hide all sub navs and 
+				 * return everything to their default states
+				 */
 				if(!mobileView) {
-					$('.sub-nav').hide();
-					$('.top-level-nav-link').removeClass('dimmed-nav-item').removeClass('active-sub-nav');
-					$('.fa-caret-up').removeClass('fa-caret-up').addClass('fa-caret-down');
+					$( '.sub-nav' ).hide();
+					$( '.top-level-nav-link' ).removeClass( 'dimmed-nav-item' ).removeClass( 'active-sub-nav' ); // Turn all the nav items into their default state
+					$( '.fa-caret-up' ).removeClass( 'fa-caret-up' ).addClass( 'fa-caret-down' ); // Change all the nav arrows back to down
 				}
+				
 			});
 			
-			$('#mobile-nav-icon').click(function(){
-				$('.fa-caret-up').removeClass('fa-caret-up').addClass('fa-caret-down');
+			/**
+			 * Toggle the top level mobile dropdown menu when 
+			 * the menu icon is clicked
+			 */
+			$( '#mobile-nav-icon' ).click( function() {
+				$( '.fa-caret-up' ).removeClass( 'fa-caret-up' ).addClass( 'fa-caret-down' ); // Change all the nav arrows to down
 				
-				if($('#mobile-nav-dropdown').is(':visible')) {
-					$('#mobile-nav-dropdown').slideUp();
-					$('.sub-nav').slideUp();
+				if( $( '#mobile-nav-dropdown' ).is( ':visible' ) ) {
+					$( '#mobile-nav-dropdown' ).slideUp(); // Hide the top level nav
+					$( '.sub-nav' ).slideUp(); // Hide the sub menu
 				} else {
-					$('#mobile-nav-dropdown').slideDown();
+					$( '#mobile-nav-dropdown' ).slideDown(); // Show the top level nav
 				}
 			});
 			
-			$('.top-level-nav-link').click(function(){
-				$('.fa-caret-up').removeClass('fa-caret-up').addClass('fa-caret-down');
+			/**
+			 * Toggle the submenus on a mobile layout when the nav items are clicked
+			 */
+			$( '.top-level-nav-link' ).click( function() {
+				$( '.fa-caret-up' ).removeClass( 'fa-caret-up' ).addClass( 'fa-caret-down' ); // Change all the nav arrows to down
 				
-				if(mobileView && $(this).siblings('.sub-nav').is(':visible')) {
-					$('.sub-nav').slideUp();
-				} else if(mobileView) {
-					$('.sub-nav').slideUp();
-					$(this).siblings('.sub-nav').slideDown();
-					$(this).find('.fa-caret-down').removeClass('fa-caret-down').addClass('fa-caret-up');
+				if( mobileView && $( this ).siblings( '.sub-nav' ).is( ':visible' ) ) {
+					$( '.sub-nav' ).slideUp(); // Hide all the sub navs
+				} else if( mobileView ) {
+					$( '.sub-nav' ).slideUp(); // Hide all the sub navs
+					$( this ).siblings( '.sub-nav' ).slideDown(); // Show the current sub nav
+					$( this ).find( '.fa-caret-down' ).removeClass( 'fa-caret-down' ).addClass( 'fa-caret-up' ); // Change the current nav arrow to down
 				}
 			});
 			
-			$(document).on('click', function(event) {
-				if(!$(event.target).closest('#site-navigation-items').length && mobileView) {
-					$('#mobile-nav-dropdown').slideUp();
-					$('.sub-nav').slideUp();
-					$('.fa-caret-up').removeClass('fa-caret-up').addClass('fa-caret-down');
+			/**
+			 * If there is a click anywhere outside the 
+			 * visible dropdown nav then hide the navigation
+			 */
+			$( document ).on( 'click', function( event ) {
+				if( !$( event.target ).closest( '#site-navigation-items' ).length && mobileView ) {
+					$( '#mobile-nav-dropdown' ).slideUp(); // Hide the main nav
+					$( '.sub-nav' ).slideUp(); // Hide the sub nav
+					$( '.fa-caret-up' ).removeClass( 'fa-caret-up' ).addClass( 'fa-caret-down' ); // Point all the nav arrows down
 				}
 			});
 		}
-		
-		function twitterTimeline(callback) {
-	    	var articleHeight = $("article").height();
-	    	
-	    	if (articleHeight > 2500 ) {
-	    		articleHeight = 2500;
-	    	}
-	    	
-	    	articleHeight = 1500;
-	    	
-	    	$(".twitter-timeline").height(articleHeight).attr("height", articleHeight);
-	    	
-	    	if(callback) {
-	    		!function(d,s,id){
-		    		var js,fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location)?'http':'https';
-		    		
-		    		if(!d.getElementById(id)) {
-		    			js = d.createElement(s);
-		    			js.id = id;
-		    			js.src = p + "://platform.twitter.com/widgets.js";
-		    			fjs.parentNode.insertBefore(js,fjs);
-		    		}
-		    	}(document,"script","twitter-wjs");
-	    	}
-	    }	
 
-})(jQuery);
+}) ( jQuery );

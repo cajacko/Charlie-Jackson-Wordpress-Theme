@@ -1,72 +1,36 @@
-(function($) {
+( function( $ ) {
 
-    $(document).ready(documentReadyFunction);
-    $(window).resize(windowResizeFunction);
-    $(window).scroll(windowScrollFunction);
-
-    function documentReadyFunction() {
-        // functions for document ready
-        onPageLoadOrResize();
-        onPageLoad();
-    }
-
-    function windowResizeFunction() {
-        onPageLoadOrResize();
-    }
-
-    function onPageLoad() {
-	    portfolioNavHighlight();
-	    scrollToPortfolioItem();
-    }
-	
-    function onPageLoadOrResize () {
-    }
+    $( document ).ready( portfolioNavHighlight );
+    $( window ).scroll( portfolioNavHighlight );
     
-    function windowScrollFunction() {		
-		portfolioNavHighlight();
-	}
-    
-    /* -----------------------------
-	SUPPORT FUNCTIONS
-	----------------------------- */
-		function portfolioNavHighlight() {
-			var scrollMiddle = $(window).scrollTop() + ($(window).height()/2);
+	/**
+	 * Highlight the currently viewed portfolio item in the sidebar
+	 */
+	function portfolioNavHighlight() {
+		var scrollMiddle = $( window ).scrollTop() + ( $( window ).height()/2 ); // Get the middle scroll position of the window
 
-			$('article').each( function(){ 
-	            var articleTop = $(this).offset().top;
-	            var articleBottom = articleTop + $(this).outerHeight(true);
-	            var navId = $(this).find('.anchor').attr('id');	            
-	            navId = '#nav-' + navId;
+		/**
+		 * Check which article is in the middle of the 
+		 * screen and then highlight that article in 
+		 * the sidebar
+		 */
+		$( 'article' ).each( function() { 
+            var articleTop = $( this ).offset().top; // Get the articles top position
+            var articleBottom = articleTop + $( this ).outerHeight( true ); // Get the articles bottom position
+            var navId = $( this ).find( '.anchor' ).attr( 'id' ); // Get the id of the article            
+            navId = '#nav-' + navId; // Set the var navId to the id of the nav element to target
+			
+			/**
+			 * If the middle scroll position is inbetween 
+			 * the current article then highlight it in 
+			 * the sidebar
+			 */
+            if( scrollMiddle > articleTop && scrollMiddle < articleBottom ) {
+	            $( navId ).addClass( 'active-portfolio-item' );
+	        } else {
+		     	$( navId ).removeClass( 'active-portfolio-item' );
+		    }
+        });
+    }
 
-	            if(scrollMiddle > articleTop && scrollMiddle < articleBottom) {
-		            $(navId).addClass('active-portfolio-item');
-		        } else {
-			     	$(navId).removeClass('active-portfolio-item');
-			    }
-	        });
-	    }
-	    
-	    function scrollToPortfolioItem() {
-		var hashTagActive = "";
-	    $(".portfolio-link").click(function (event) {
-	        if(hashTagActive != this.hash) { //this will prevent if the user click several times the same link to freeze the scroll.
-	            event.preventDefault();
-	            //calculate destination place
-	            var dest = 0;
-	            if ($(this.hash).offset().top > $(document).height() - $(window).height()) {
-	                dest = $(document).height() - $(window).height();
-	            } else {
-	                dest = $(this.hash).offset().top;
-	            }
-	            //go to destination
-	            $('html,body').animate({
-	                scrollTop: dest
-	            }, 500, 'swing', function(){
-		            hashTagActive = "";
-		        });
-	            hashTagActive = this.hash;
-	        }
-	    });
-	}
-
-})(jQuery);
+}) ( jQuery );

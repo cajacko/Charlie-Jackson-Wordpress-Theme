@@ -23,6 +23,7 @@
 							<ul>
 								<li><a target="_blank" href="<?php echo get_template_directory_uri(); ?>/inc/media/cv.pdf">CV</a><span class="hire-me-seperator">·</span></li>
 								<li><a href="<?php echo esc_url( home_url() ); ?>/portfolio">Portfolio</a><span class="hire-me-seperator">·</span></li>
+								<li><a target="_blank" href="https://github.com/cajacko">GitHub</a><span class="hire-me-seperator">·</span></li>
 								<li><a target="_blank" href="http://uk.linkedin.com/in/charliejackson9">LinkedIn</a><span class="hire-me-seperator">·</span></li>
 								<li><a href="mailto:contact@charliejackson.com">Email</a></li>
 							</ul>
@@ -36,6 +37,7 @@
 							<ul>
 								<li class="follow-icon"><a target="_blank" href="http://uk.linkedin.com/in/charliejackson9"><i class="fa fa-linkedin"></i></a></li>
 								<li class="follow-icon"><a target="_blank" href="https://twitter.com/charliejackson"><i class="fa fa-twitter"></i></a></li>
+								<li class="follow-icon"><a target="_blank" href="https://github.com/cajacko"><i class="fa fa-github"></i></a></li>
 								<li class="follow-icon"><a target="_blank" href="https://uk.pinterest.com/cajacko/"><i class="fa fa-pinterest"></i></a></li>
 								<li class="follow-icon"><a target="_blank" href="https://www.youtube.com/c/CharlieJackson9"><i class="fa fa-youtube"></i></a></li>
 								<li class="follow-button"><a target="_blank" href="http://charliejackson.us4.list-manage.com/subscribe?MERGE0=&u=386543f0f8d9b49a9ad6440a1&id=e9b8bb98df">Newsletter <i class="fa fa-envelope"></i></a></li>

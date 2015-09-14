@@ -258,8 +258,8 @@ th {
 }
 @font-face {
   font-family: 'Glyphicons Halflings';
-  src: url('http://localhost:8888/charliejackson/wp-content/themes/charliejackson/inc/bootstrap/fonts/glyphicons-halflings-regular.eot');
-  src: url('http://localhost:8888/charliejackson/wp-content/themes/charliejackson/inc/bootstrap/fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('http://localhost:8888/charliejackson/wp-content/themes/charliejackson/inc/bootstrap/fonts/glyphicons-halflings-regular.woff') format('woff'), url('http://localhost:8888/charliejackson/wp-content/themes/charliejackson/inc/bootstrap/fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('http://localhost:8888/charliejackson/wp-content/themes/charliejackson/inc/bootstrap/fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+  src: url('http://localhost/charliejackson/wp-content/themes/charliejackson/inc/bootstrap/fonts/glyphicons-halflings-regular.eot');
+  src: url('http://localhost/charliejackson/wp-content/themes/charliejackson/inc/bootstrap/fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('http://localhost/charliejackson/wp-content/themes/charliejackson/inc/bootstrap/fonts/glyphicons-halflings-regular.woff') format('woff'), url('http://localhost/charliejackson/wp-content/themes/charliejackson/inc/bootstrap/fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('http://localhost/charliejackson/wp-content/themes/charliejackson/inc/bootstrap/fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
 }
 .glyphicon {
   position: relative;
@@ -6558,6 +6558,15 @@ POST
 .article-container img {
   width: 100%;
   height: auto;
+}
+.article-container .gallery {
+  padding: 5px;
+  background-color: #001921;
+}
+.article-container .gallery figure {
+  width: 33.3333%;
+  float: left;
+  padding: 5px;
 }
 .article-container header .post-featured-image {
   width: 100%;

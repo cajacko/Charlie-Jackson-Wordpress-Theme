@@ -19,7 +19,7 @@
 		
 		<section class="post-body wrap">
 			
-			<?php the_content(); ?>
+			<?php echo charliejackson_get_the_content_with_formatting(); ?>
 			
 		</section>
 		

@@ -352,6 +352,7 @@ GET THE CONTENT WITH FORMATTING
 		$content = get_the_content( $more_link_text, $stripteaser, $more_file );
 		$content = apply_filters( 'the_content', $content );
 		$content = str_replace( ']]>', ']]&gt;', $content ); // Can't remember what this was for, but I must have added it for a reason?...
+		$content = str_replace( '<p>&nbsp;</p>', '', $content ); // Remove empty paragraphs
 		return $content;
 	}
 
@@ -441,7 +442,7 @@ POST FORMAT FUNCTION
 	 * Get the gallery from the content and display it
 	 */
 	function charliejackson_the_gallery() {
-		preg_match ( "/(?s)<div id=\'gallery.*?<\/figure><\/div>/" , charliejackson_get_the_content_with_formatting(), $match );
+		preg_match ( '/<div class=\"gallery.*?<\/figure><\/div>/' , charliejackson_get_the_content_with_formatting(), $match );
 		
 		echo $match[0];
 	}
@@ -450,8 +451,84 @@ POST FORMAT FUNCTION
 	 * Remove the gallery from the content and then display the content
 	 */
 	function charliejackson_the_gallery_content() {
-		echo preg_replace ( "/(?s)<div id=\'gallery.*?<\/figure><\/div>/" , "" , charliejackson_get_the_content_with_formatting() );
+		echo preg_replace ( '/<div class=\"gallery.*?<\/figure><\/div>/' , "" , charliejackson_get_the_content_with_formatting() );
 	}
+
+/* -----------------------------
+FILTER THE GALLERY
+----------------------------- */
+	/**
+	 * Output the gallery contents
+	 */	
+	function charliejackson_gallery( $output, $attr ) {
+	    global $post;
+	
+	    if( isset( $attr[ 'orderby' ] ) ) {
+	        $attr[ 'orderby' ] = sanitize_sql_orderby( $attr[ 'orderby' ] );
+	        
+	        if( !$attr[ 'orderby' ] ) {
+	            unset( $attr[ 'orderby' ] );
+	        }
+	    }
+	
+	    extract( shortcode_atts( array(
+	        'order'      => 'ASC',
+	        'orderby'    => 'menu_order ID',
+	        'id'         => $post->ID,
+	        'itemtag'    => 'dl',
+	        'icontag'    => 'dt',
+	        'captiontag' => 'dd',
+	        'columns'    => 3,
+	        'size'       => 'thumbnail',
+	        'include'    => '',
+	        'exclude'    => '',
+	    ), $attr ) );
+	
+	    $id = intval( $id );
+	    
+	    if( 'RAND' == $order ) { 
+		    $orderby = 'none';
+		}
+	
+	    if( !empty( $include ) ) {
+	        $include = preg_replace( '/[^0-9,]+/', '', $include );
+	        
+	        $_attachments = get_posts( array( 
+	        	'include'        => $include, 
+	        	'post_status'    => 'inherit', 
+	        	'post_type'      => 'attachment', 
+	        	'post_mime_type' => 'image', 
+	        	'order'          => $order, 
+	        	'orderby'        => $orderby,
+	        ) );
+	
+	        $attachments = array();
+	        
+	        foreach ( $_attachments as $key => $val ) {
+	            $attachments[ $val->ID ] = $_attachments[ $key ];
+	        }
+	    }
+	
+	    if( empty( $attachments ) ) { 
+		    return '';
+		}
+
+	    $output = "<div class=\"gallery clearfix\">";
+
+	    foreach ( $attachments as $id => $attachment ) {
+	        $img = wp_get_attachment_image_src( $id, 'thumbnail' );
+	
+	        $output .= "<figure>";
+	        $output .= "<img src=\"{$img[0]}\" width=\"{$img[1]}\" height=\"{$img[2]}\" alt=\"\" />";
+	        $output .= "</figure>";
+	    }
+	
+	    $output .= "</div>";
+	
+	    return $output;
+	}
+	
+	add_filter( 'post_gallery', 'charliejackson_gallery', 10, 2 );
 		
 /* -----------------------------
 DISPLAY THE PAGINATION

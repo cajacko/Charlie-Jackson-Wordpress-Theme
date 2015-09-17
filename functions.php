@@ -121,6 +121,36 @@ IS THE FRONT PAGE SHOWING
 			return false;
 		}
 	}
+
+/* -----------------------------
+GET THE SYNCED URL
+----------------------------- */
+	function charliejackson_cross_site_sync_url() {
+		$url = get_post_meta( get_the_ID(), 'cross_site_sync_original_url', true );
+		
+		if( $url == '' ) {
+			return false;
+		} else {
+			return $url;
+		}
+	}
+
+/* -----------------------------
+THE POST TITLE AND LINK
+----------------------------- */
+	function charliejackson_the_title() {
+		$cross_site_sync_url = charliejackson_cross_site_sync_url();
+		
+		if( $cross_site_sync_url ) {
+			echo '<a href="' . $cross_site_sync_url . '" target="_blank">';
+		} else {
+			echo '<a href="' . get_permalink() . '">';
+		}
+
+		the_title();
+		
+		echo '</a>';
+	}
 	
 /* -----------------------------
 FILTER OEMBED OUTPUT

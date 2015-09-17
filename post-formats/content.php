@@ -1,5 +1,8 @@
 <article class="new-article">
 	<div class="article-container">
+		
+		<?php $cross_site_sync_url = charliejackson_cross_site_sync_url(); ?>
+		
 		<a class="anchor" id="post-<?php the_ID(); ?>"></a>
 		
 		<header class="clearfix">
@@ -11,8 +14,20 @@
 			<?php endif; ?>
 			
 			<div class="header-title wrap">
+
+				<h2><?php charliejackson_the_title(); ?></h2>
 				
-				<h2><a href="<?php echo get_permalink(); ?>"><?php the_title(); ?></a></h2>
+				<?php if( $cross_site_sync_url ): ?>
+					
+					<small><a target="_blank" href="<?php echo $cross_site_sync_url; ?>">Originally published on <?php
+						
+						$website = esc_attr( get_option( 'cross_site_sync_website' ) );
+						
+						echo str_replace( 'http://', '', $website );
+						 
+					?></a></small>
+					
+				<?php endif; ?>
 				
 			</div>
 		</header>

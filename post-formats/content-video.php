@@ -10,6 +10,8 @@
 				
 				<h2><?php charliejackson_the_title(); ?></h2>
 				
+				<?php charliejackson_cross_site_sync_message(); ?>
+				
 			</div>
 		</header>
 		

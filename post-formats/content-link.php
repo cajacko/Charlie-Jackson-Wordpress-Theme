@@ -14,6 +14,8 @@
 				
 				<h2><a target="_blank" href="<?php echo get_the_content(); ?>"><?php the_title(); ?></a></h2>
 				
+				<?php charliejackson_cross_site_sync_message(); ?>
+				
 			</div>
 		</header>
 		

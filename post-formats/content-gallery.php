@@ -8,7 +8,9 @@
 			
 			<div class="header-title wrap">
 				
-				<h2><a href="<?php echo get_permalink(); ?>"><?php the_title(); ?></a></h2>
+				<h2><?php charliejackson_the_title(); ?></h2>
+				
+				<?php charliejackson_cross_site_sync_message(); ?>
 				
 			</div>
 		</header>

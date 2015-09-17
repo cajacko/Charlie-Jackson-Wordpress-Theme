@@ -121,6 +121,68 @@ IS THE FRONT PAGE SHOWING
 			return false;
 		}
 	}
+
+/* -----------------------------
+GET THE SYNCED URL
+----------------------------- */
+	function charliejackson_cross_site_sync_url() {
+		$url = get_post_meta( get_the_ID(), 'cross_site_sync_original_url', true );
+		
+		if( $url == '' ) {
+			return false;
+		} else {
+			return $url;
+		}
+	}
+
+/* -----------------------------
+GET THE SYNCED FEATURED IMAGE
+----------------------------- */
+	function charliejackson_cross_site_sync_featured_image() {
+		$url = get_post_meta( get_the_ID(), 'cross_site_sync_featured_image', true );
+		
+		if( $url == '' ) {
+			return false;
+		} else {
+			return $url;
+		}
+	}
+
+/* -----------------------------
+THE POST TITLE AND LINK
+----------------------------- */
+	function charliejackson_the_title() {
+		$cross_site_sync_url = charliejackson_cross_site_sync_url();
+		
+		if( $cross_site_sync_url ) {
+			echo '<a href="' . $cross_site_sync_url . '" target="_blank">';
+		} else {
+			echo '<a href="' . get_permalink() . '">';
+		}
+
+		the_title();
+		
+		echo '</a>';
+	}
+
+/* -----------------------------
+CROSS SITE SYNC MESSAGE
+----------------------------- */
+	function charliejackson_cross_site_sync_message() {	
+		$cross_site_sync_url = charliejackson_cross_site_sync_url();
+		
+		if( $cross_site_sync_url ) {
+
+			echo '<small><a target="_blank" href="' . $cross_site_sync_url . '">Originally published on ';
+				
+			$website = get_post_meta( get_the_ID(), 'cross_site_sync_home_url', true );
+				
+			echo str_replace( 'http://', '', $website );
+				 
+			echo '</a></small>';
+			
+		}
+	}
 	
 /* -----------------------------
 FILTER OEMBED OUTPUT

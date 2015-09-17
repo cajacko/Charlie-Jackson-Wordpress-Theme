@@ -6556,7 +6556,7 @@ POST
   background-color: #00beff;
 }
 .article-container img {
-  width: 100%;
+  max-width: 100%;
   height: auto;
 }
 .article-container .gallery {

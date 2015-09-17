@@ -169,11 +169,13 @@ THE POST TITLE AND LINK
 CROSS SITE SYNC MESSAGE
 ----------------------------- */
 	function charliejackson_cross_site_sync_message() {	
-		if( charliejackson_cross_site_sync_url() ) {
+		$cross_site_sync_url = charliejackson_cross_site_sync_url();
+		
+		if( $cross_site_sync_url ) {
 
 			echo '<small><a target="_blank" href="' . $cross_site_sync_url . '">Originally published on ';
 				
-			$website = esc_attr( get_option( 'cross_site_sync_website' ) );
+			$website = get_post_meta( get_the_ID(), 'cross_site_sync_home_url', true );
 				
 			echo str_replace( 'http://', '', $website );
 				 

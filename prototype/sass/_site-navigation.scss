@@ -1,0 +1,127 @@
+$MenuIcon--width: 25px;
+$MenuIcon--height: 20px;
+$MenuIcon-line--height: round($MenuIcon--height / 10);
+
+.SiteNavigation-topLevel,
+.SiteNavigation-menu,
+.SiteNavigation-subMenu,
+.SiteNavigation-socialMenu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+// .SiteNavigation-menu,
+.SiteNavigation-subMenu,
+.SiteNavigation-socialMenu {
+  display: none;
+}
+
+.SiteNavigation {
+  color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.SiteNavigation,
+.SiteNavigation-heading {
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #123156;
+    // opacity: 0;
+    transition: opacity .25s ease-in-out;
+  }
+}
+
+.SiteNavigation-topLevel,
+.SiteNavigation-menu {
+  position: relative;
+  z-index: 9;
+}
+
+.SiteNavigation-heading {
+  background: #20589c;
+  border-bottom: 2px solid #143b69;
+  box-shadow: 0 0 4px #6b6a6a;
+  background: linear-gradient(to bottom, #20589c 0%,#1f5494 100%);
+}
+
+.SiteNavigation-menu {
+
+}
+
+.SiteLogo-image {
+  display: none;
+  max-width: 50px;
+}
+
+.SiteTitle {
+  display: block;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.SiteTitle-text {
+  display: inline-block;
+  font-size: $MenuIcon--height;
+  font-weight: normal;
+  line-height: 1;
+  margin: 10px 0;
+}
+
+.MenuIcon {
+  display: block;
+  height: $MenuIcon--height;
+  left: 10px;
+  position: absolute;
+  top: 10px;
+  width: $MenuIcon--width;
+}
+
+.MenuIcon-label {
+  display: none;
+}
+
+.MenuIcon-line {
+  background-color: white;
+  border-radius: $MenuIcon-line--height;
+  height: $MenuIcon-line--height;
+  left: 0;
+  position: absolute;
+  right: 0;
+}
+
+.MenuIcon-topLine {
+  top: 0;
+}
+
+.MenuIcon-middleLine {
+  top: ($MenuIcon--height - $MenuIcon-line--height) / 2;
+}
+
+.MenuIcon-bottomLine {
+  top: $MenuIcon--height - $MenuIcon-line--height;
+}
+
+.socialMenuIcon-label {
+  display: none;
+}
+
+.socialMenuIcon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.socialMenuIcon-image {
+  height: $MenuIcon--height;
+}

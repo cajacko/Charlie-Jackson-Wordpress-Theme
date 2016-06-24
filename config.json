@@ -1,0 +1,21 @@
+{
+    "gulpTasks": {
+        "phpunit": "phpunit",
+        "phpcs": "phpcs"
+    },
+    "tests": {
+        "dirs": {
+            "php": "./tests/php/"
+        },
+        "phpAutoload": "./tests/php/autoload.php"
+    },
+    "libs": {
+        "npm": {
+            "dir": "./node_modules/"
+        },
+        "composer": {
+            "dir": "./vendor/"
+        }
+    },
+    "localhost": "http://charlie-jackson.local.com:81"
+}

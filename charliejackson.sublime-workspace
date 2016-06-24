@@ -1,0 +1,358 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"text",
+				"text-decoration"
+			],
+			[
+				"in",
+				"inline"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 146.0,
+		"last_filter": "install",
+		"selected_items":
+		[
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"ASP",
+				"Set Syntax: ASP"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"",
+				"About"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"instak",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 472.0
+	},
+	"console":
+	{
+		"height": 125.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/Data/Personal/charlie-jackson"
+	],
+	"file_history":
+	[
+		"/C/Data/Personal/charliejackson/wp-content/themes/charliejackson/css/sass/_banner.scss",
+		"/C/Data/Personal/charliejackson/wp-content/themes/charliejackson/css/sass/_global_mixins.scss",
+		"/C/Data/Personal/charliejackson/wp-content/themes/charliejackson/css/sass/_global_variables.scss",
+		"/C/Data/Personal/charliejackson/wp-content/themes/charliejackson/css/sass/import.scss",
+		"/C/Data/Personal/charliejackson/wp-content/themes/charliejackson/css/sass/_general.scss",
+		"/C/Data/Personal/charliejackson/wp-content/themes/charliejackson/css/sass/_site_nav.scss",
+		"/C/Data/Personal/charliejackson/wp-content/themes/charliejackson/index.php",
+		"/C/Data/Personal/charliejackson/wp-content/themes/charliejackson/css/sass/_bio.scss",
+		"/C/Data/Personal/charliejackson/wp-content/themes/charliejackson/sublayouts/footer.php",
+		"/C/Data/Personal/charliejackson/wp-content/themes/charliejackson/sublayouts/header.php",
+		"/C/Data/Personal/charliejackson/wp-content/themes/charliejackson/css/style.css",
+		"/C/Data/Personal/charliejackson/wp-content/themes/charliejackson/gulpfile.js",
+		"/C/Data/Personal/charliejackson/wp-content/themes/charliejackson/js/lib.js",
+		"/C/Data/Personal/charliejackson/wp-content/themes/charliejackson/tmp/modernizr.js",
+		"/C/Data/Personal/charliejackson/wp-content/themes/charliejackson/css/sass/_gradients.scss",
+		"/C/Data/Personal/charliejackson/wp-content/themes/charliejackson/css/sass/_fonts.scss",
+		"/C/Data/Personal/charliejackson/wp-content/themes/charliejackson/css/sass/_breakpoints.scss",
+		"/C/Data/Personal/charliejackson/wp-content/themes/charliejackson/css/sass/_variables.scss",
+		"/C/Data/Personal/charliejackson/wp-content/themes/charliejackson/functions.php",
+		"/C/Data/Personal/charliejackson/wp-content/themes/charliejackson/.gitignore",
+		"/C/Data/Personal/charliejackson/wp-content/themes/charliejackson/package.json",
+		"/C/Data/Personal/charliejackson/wp-content/themes/charliejackson/functions/post.php",
+		"/C/Data/Personal/charliejackson/wp-content/themes/charliejackson/functions/general.php",
+		"/C/Data/Personal/charliejackson/wp-content/themes/charliejackson/sections/site-navigation.php",
+		"/C/Data/Personal/charliejackson/wp-content/themes/charliejackson/sections/banner.php",
+		"/C/Data/Personal/charliejackson/wp-content/themes/charliejackson/post-formats/content-project.php",
+		"/C/Data/Personal/charliejackson/wp-content/themes/charliejackson/post-formats/content-portfolio.php",
+		"/C/Data/Personal/charliejackson/wp-content/themes/charliejackson/page-portfolio.php",
+		"/C/Data/Personal/charliejackson/wp-content/themes/charliejackson/page-projects.php",
+		"/C/Data/Personal/charliejackson/wp-content/themes/charliejackson/sections/post-footer.php",
+		"/C/Data/Personal/charliejackson/wp-content/themes/charliejackson/sections/post-loop.php",
+		"/C/Data/Personal/charliejackson/wp-config.php",
+		"/C/Data/Personal/charliejackson/wp-content/themes/charliejackson/post-formats/content-page.php",
+		"/C/Windows/System32/drivers/etc/hosts",
+		"/C/wamp/bin/apache/apache2.4.9/conf/extra/httpd-vhosts.conf",
+		"/C/Data/TaylorWimpey/prototype/prototype/trunk/source/.htaccess",
+		"/C/wamp/wampmanager.tpl",
+		"/C/Data/Personal/cornucopia/wordpress/index.php",
+		"/C/inetpub/wwwroot/iisstart.htm",
+		"/C/Data/test/index.php",
+		"/C/wamp/bin/apache/apache2.4.9/conf/httpd.conf",
+		"/C/Data/Personal/index.php",
+		"/C/Data/BMI/build/bmi_build/BMI/Presentation.Web/Sublayouts/Spotlights/CosmeticBodyMap.ascx",
+		"/C/Data/BMI/build/bmi_build/BMI/Presentation.Web/Sublayouts/Spotlights/BodyMap.ascx",
+		"/C/Users/charlie.jackson/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/C/Data/BMI/build/bmi_build/BMI/Presentation.Web/Sublayouts/Spotlights/AccordionWrapper.ascx",
+		"/C/Data/BMI/build/bmi_build/BMI/Presentation.Web/_lib/scss/_universal.scss",
+		"/C/Data/BMI/build/bmi_build/BMI/Presentation.Web/_lib/js/main.js",
+		"/C/Data/BMI/build/bmi_build/BMI/Presentation.Web/_lib/js/build.js",
+		"/C/Data/BMI/build/bmi_build/BMI/Presentation.Web/Sublayouts/PageTypes/MyAppointments.ascx",
+		"/C/Users/charlie.jackson/AppData/Roaming/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
+		"/C/Data/BMI/build/bmi_build/BMI/Presentation.Web/Sublayouts/Spotlights/EmailPreferencesSpotlight.ascx",
+		"/C/Data/BMI/build/bmi_build/BMI/Presentation.Web/_lib/css/style.css",
+		"/C/Users/charlie.jackson/AppData/Roaming/Sublime Text 3/Packages/BracketHighlighter/bh_core.sublime-settings",
+		"/C/Data/BMI/build/bmi_build/BMI/Presentation.Web/Export/Appointment.aspx",
+		"/C/Data/LIA/prototype/app/scss/_styles.scss",
+		"/C/Data/LIA/prototype/app/scss/main.scss",
+		"/C/Data/LIA/prototype/app/js/main.js",
+		"/C/Data/LIA/prototype/app/contact.html",
+		"/C/Users/charlie.jackson/AppData/Roaming/Sublime Text 3/Packages/User/Side Bar.sublime-settings",
+		"/C/Users/charlie.jackson/Documents/test.php",
+		"/C/Users/charlie.jackson/AppData/Roaming/Sublime Text 3/Packages/SideBarEnhancements/Side Bar.sublime-settings",
+		"/C/Users/charlie.jackson/AppData/Roaming/Sublime Text 3/Packages/SideBarEnhancements/Default (Windows).sublime-keymap",
+		"/C/Users/charlie.jackson/AppData/Roaming/Sublime Text 2/Packages/SublimeLinter/SublimeLinter.sublime-settings",
+		"/C/Users/charlie.jackson/AppData/Roaming/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+		"/C/Data/Sublime Projects/LIA/Prototype/LIA Prototype.sublime-project"
+	],
+	"find":
+	{
+		"height": 38.0
+	},
+	"find_in_files":
+	{
+		"height": 104.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"em",
+			"rem",
+			"../../",
+			"../",
+			"Nine Studios",
+			"if($url) {\n	// 	echo $url;\n	// 	return true;\n	// } else {\n	// 	echo '';\n	// 	return false;\n	// }",
+			"'",
+			" class=\"follow-icon\"",
+			"save_post",
+			"init",
+			"pre_get_posts",
+			"hee",
+			"80",
+			"http://localhost",
+			"80",
+			"HEE-LETB",
+			"local",
+			"pcc",
+			"<VirtualHost *:80>\n    DocumentRoot \"C:\\Data\\Personal\\drupal-8\" \n    ServerName drupal-8.local.com\n    <directory \"C:/Data/Personal/drupal-8/\">\n        Options Indexes FollowSymLinks\n        AllowOverride All\n                Order allow,deny\n                Allow from all\n                Require local\n    </directory>\n</VirtualHost>",
+			"input[type=\"Submit\"]",
+			".form input[type=\"Submit\"].cta-sec",
+			", .form input[type=\"Submit\"].cta-sec",
+			",.form input[type=\"Submit\"].cta-sec",
+			"input[type=\"Submit\"].cta-",
+			"input[type=\"Submit\"]",
+			"input[type=\"Submit\"].",
+			"input[type=\"Submit\"]",
+			"input[type=\"Submit\"].cta-sec",
+			"input[type=\"Submit\"]",
+			"dateTimePicker",
+			"console.log('click",
+			"console.log( 'click",
+			"console.log( 'mobile",
+			"console.log('mobile",
+			"goToNextSlide",
+			"bodyMapToolMobile",
+			"bodyMapSlider.goToNextSlide",
+			"slider",
+			"translate3d",
+			"translate3D",
+			"fadein",
+			"SectionAInputChange",
+			"female",
+			"body",
+			"<img class=\"bmt-img\"",
+			"gps",
+			"feature-sign-up",
+			"EmailPreferencesSpotlight",
+			"class=\"feature feature-sign-up\"",
+			"feature-sign-up",
+			"feature-mybmi-appointment-overview",
+			"min-height: 300px",
+			"feature-mybmi-appointment-overview .)",
+			"feature-mybmi-appointment-overview",
+			"bracket",
+			"EditingFormTable",
+			"EditingFormValue",
+			"checkbo",
+			"checkbox",
+			"check"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"/wp-content/themes/charliejackson/",
+			"../../",
+			"Charlie Jackson",
+			"\"",
+			"",
+			"8080"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 29.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "charliejackson.sublime-project",
+	"replace":
+	{
+		"height": 72.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"Sublayouts\\PageTypes\\MyAppointments.ascx"
+			],
+			[
+				"sublayouts/my",
+				"Sublayouts\\PageTypes\\MyAppointments.ascx"
+			],
+			[
+				"appo",
+				"Export\\Appointment.aspx"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "super",
+		"selected_items":
+		[
+			[
+				"super",
+				"C:\\Data\\Sublime Projects\\Personal\\supercouth.sublime-project"
+			],
+			[
+				"occ",
+				"C:\\Data\\Sublime Projects\\OCC\\Build\\OCC-build.sublime-project"
+			],
+			[
+				"hee",
+				"C:\\Data\\Sublime Projects\\HEE-LETB\\build\\build-heeletb.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 296.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

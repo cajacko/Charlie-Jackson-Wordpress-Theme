@@ -1,0 +1,32 @@
+{
+  "name": "charliejackson",
+  "version": "1.0.0",
+  "description": "Personal blog site for Charlie Jackson. Built in PHP.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cajacko/CharlieJackson.git"
+  },
+  "keywords": [
+    "blog",
+    "php",
+    "javascript",
+    "web",
+    "html",
+    "sass",
+    "css",
+    "gulp",
+    "phpunit",
+    "npm",
+    "browserify"
+  ],
+  "author": "Charlie Jackson",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/cajacko/CharlieJackson/issues"
+  },
+  "homepage": "https://github.com/cajacko/CharlieJackson#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-phpcs": "^1.1.1"
+  }
+}

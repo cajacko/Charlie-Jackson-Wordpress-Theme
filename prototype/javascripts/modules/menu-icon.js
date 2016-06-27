@@ -96,18 +96,20 @@ function closeIcon(element, topLine, middleLine, bottomLine) {
 
 $(document).ready(function() {
   $('.MenuIcon').click(function() {
-    var icon = $(this);
-    var topLine = $('#MenuIcon-topLine');
-    var middleLine = $('#MenuIcon-middleLine');
-    var bottomLine = $('#MenuIcon-bottomLine');
+    // var icon = $(this);
+    // var topLine = $('#MenuIcon-topLine');
+    // var middleLine = $('#MenuIcon-middleLine');
+    // var bottomLine = $('#MenuIcon-bottomLine');
+    $('#SiteNavigation').toggleClass('u-menuActive');
+    $('.SiteNavigation-menu').slideToggle(500);
 
-    if (isAnimating(icon)) {
-      return false;
-    } else if (isCloseIcon(icon)) {
-      barsIcon(icon, topLine, middleLine, bottomLine);
-    } else {
-      closeIcon(icon, topLine, middleLine, bottomLine);
-    }
+    // if (isAnimating(icon)) {
+    //   return false;
+    // } else if (isCloseIcon(icon)) {
+    //   barsIcon(icon, topLine, middleLine, bottomLine);
+    // } else {
+    //   closeIcon(icon, topLine, middleLine, bottomLine);
+    // }
   });
 });
 

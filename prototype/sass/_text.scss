@@ -1,0 +1,32 @@
+html {
+  color: $Black;
+  font-family: 'Source Sans Pro', sans-serif;
+  line-height: 1.5;
+}
+
+a {
+  color: $Primary-dark;
+  text-decoration: underline;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+}
+
+button {
+  text-transform: uppercase;
+  background: $Primary;
+  color: $White;
+
+  &:focus,
+  &:active {
+    appearance: none;
+    outline: none;
+    background: $Primary-dark;
+  }
+}

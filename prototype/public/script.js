@@ -1,6 +1,37 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 require('./modules/menu-icon');
-},{"./modules/menu-icon":2}],2:[function(require,module,exports){
+require('./modules/inputs');
+
+},{"./modules/inputs":2,"./modules/menu-icon":3}],2:[function(require,module,exports){
+var $ = require('jquery');
+var activeClass = 'u-active';
+
+function inputFocus(element) {
+  $(element).addClass('u-active');
+  $(element).find('.Newsletter-input').focus();
+}
+
+function inputBlur(element) {
+  if (!$(element).find('.Newsletter-input').val()) {
+    $(element).removeClass(activeClass);
+  }
+}
+
+$('.Newsletter-label').click(function() {
+  if (!$(this).hasClass(activeClass)) {
+    inputFocus($(this).parent());
+  }
+});
+
+$('.Newsletter-input').blur(function() {
+  inputBlur($(this).parent());
+});
+
+$('.Newsletter-input').focus(function() {
+  inputFocus($(this).parent());
+});
+
+},{"jquery":4}],3:[function(require,module,exports){
 (function (global){
 var $ = global.jquery  = require('jquery');
 var animating = {};
@@ -100,18 +131,20 @@ function closeIcon(element, topLine, middleLine, bottomLine) {
 
 $(document).ready(function() {
   $('.MenuIcon').click(function() {
-    var icon = $(this);
-    var topLine = $('#MenuIcon-topLine');
-    var middleLine = $('#MenuIcon-middleLine');
-    var bottomLine = $('#MenuIcon-bottomLine');
+    // var icon = $(this);
+    // var topLine = $('#MenuIcon-topLine');
+    // var middleLine = $('#MenuIcon-middleLine');
+    // var bottomLine = $('#MenuIcon-bottomLine');
+    $('#SiteNavigation').toggleClass('u-menuActive');
+    $('.SiteNavigation-menu').slideToggle(500);
 
-    if (isAnimating(icon)) {
-      return false;
-    } else if (isCloseIcon(icon)) {
-      barsIcon(icon, topLine, middleLine, bottomLine);
-    } else {
-      closeIcon(icon, topLine, middleLine, bottomLine);
-    }
+    // if (isAnimating(icon)) {
+    //   return false;
+    // } else if (isCloseIcon(icon)) {
+    //   barsIcon(icon, topLine, middleLine, bottomLine);
+    // } else {
+    //   closeIcon(icon, topLine, middleLine, bottomLine);
+    // }
   });
 });
 
@@ -236,7 +269,7 @@ $.fn.rotate=function(options) {
   return $this;
 };
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"jquery":3}],3:[function(require,module,exports){
+},{"jquery":4}],4:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v3.0.0
  * https://jquery.com/

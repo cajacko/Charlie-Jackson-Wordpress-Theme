@@ -8,6 +8,7 @@ var phpcs = require('gulp-phpcs');
 module.exports = function(gulp, phpLintDirs) {
   var phpLintDirs = [
     './**/*.php',
+    '!./prototype/**/*',
     '!' + config.libs.npm.dir + '**/*',
     '!' + config.libs.composer.dir + '**/*'
   ];

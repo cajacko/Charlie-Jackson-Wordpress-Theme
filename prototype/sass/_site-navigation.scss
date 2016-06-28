@@ -31,7 +31,7 @@ $SiteNavigation-header--darkBlue: $Primary-darker;
 .SiteNavigation,
 .SiteNavigation-heading {
   &:after {
-    background: $Primary-darkest;
+    background: darken($Primary-darker, 8%);
     bottom: 0;
     content: '';
     display: block;
@@ -49,8 +49,21 @@ $SiteNavigation-header--darkBlue: $Primary-darker;
 }
 
 .SiteNavigation-menuItem {
+  border-bottom: 1px solid $Primary-darker;
+  margin: 10px 0;
+  padding-bottom: 5px;
   position: relative;
   z-index: 9;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  a {
+    color: $White;
+    font-weight: 300;
+    text-decoration: none;
+  }
 }
 
 .SiteNavigation-topLevel,
@@ -68,6 +81,8 @@ $SiteNavigation-header--darkBlue: $Primary-darker;
 .SiteNavigation-menu {
   display: none;
   height: 100vh;
+  padding: 10px 50px;
+  font-size: 20px;
 }
 
 .SiteLogo-image {

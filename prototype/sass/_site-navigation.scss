@@ -86,10 +86,13 @@ $SiteNavigation-header--darkBlue: $Primary-darker;
   display: none;
 }
 
+$MenuIcon-extraWidth: 4px;
+$MenuIcon-left: 10px;
+
 .MenuIcon {
   display: block;
   height: $MenuIcon--height;
-  left: 10px;
+  left: $MenuIcon-left;
   position: absolute;
   top: 10px;
   width: $MenuIcon--width;

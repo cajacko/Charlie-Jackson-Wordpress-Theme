@@ -377,7 +377,8 @@ html {
 
 a {
   color: #00838F;
-  text-decoration: underline; }
+  text-decoration: underline;
+  cursor: pointer; }
 
 h1,
 h2,
@@ -619,21 +620,22 @@ button {
   left: 0;
   color: #757575;
   -webkit-transition: top .25s ease-in-out, font-size .25s ease-in-out;
-  transition: top .25s ease-in-out, font-size .25s ease-in-out; }
+  transition: top .25s ease-in-out, font-size .25s ease-in-out;
+  cursor: text; }
   .u-active .Newsletter-label {
     top: -12px;
     font-size: 12px; }
 
 .Newsletter-input {
-  box-sizing: border-box;
-  padding: 5px 0; }
-
-.Newsletter-input {
   width: calc(100% - 75px);
   background: none;
   border: none;
-  border-bottom: 2px solid #9E9E9E; }
-  .Newsletter-input:active, .Newsletter-input:focus {
+  border-bottom: 2px solid #9E9E9E;
+  box-sizing: border-box;
+  padding: 5px 0;
+  border-radius: 0; }
+  .Newsletter-input:active, .Newsletter-input:focus, .Newsletter-input:hover,
+  .Newsletter-label:hover + .Newsletter-input {
     border-bottom-color: #0097A7;
     outline: none;
     -webkit-appearance: none;
@@ -650,8 +652,9 @@ button {
   top: -16px;
   right: 0;
   -webkit-transition: top 0.1s ease-in-out, right 0.1s ease-in-out, height 0.1s ease-in-out, width 0.1s ease-in-out;
-  transition: top 0.1s ease-in-out, right 0.1s ease-in-out, height 0.1s ease-in-out, width 0.1s ease-in-out; }
-  .Newsletter-button:active, .Newsletter-button:focus {
+  transition: top 0.1s ease-in-out, right 0.1s ease-in-out, height 0.1s ease-in-out, width 0.1s ease-in-out;
+  cursor: pointer; }
+  .Newsletter-button:active, .Newsletter-button:focus, .Newsletter-button:hover {
     width: 70px;
     height: 70px;
     top: -18.5px;

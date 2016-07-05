@@ -1,0 +1,88 @@
+<% include ../sublayouts/header %>
+  <section class="Featured">
+    <h2 class="Featured-title">Featured articles</h2>
+    <div>
+      <article>
+      </article>
+    </div>
+
+    <nav class="Featured-nav">
+      <ul class="Featured-navList">
+        <li class="Featured-navListItem"><a class="Featured-navListLink"><span class="Featured-navListLabel">1st item</span></a></li>
+        <li class="Featured-navListItem"><a class="Featured-navListLink"><span class="Featured-navListLabel">1st item</span></a></li>
+        <li class="Featured-navListItem"><a class="Featured-navListLink"><span class="Featured-navListLabel">1st item</span></a></li>
+        <li class="Featured-navListItem"><a class="Featured-navListLink"><span class="Featured-navListLabel">1st item</span></a></li>
+        <li class="Featured-navListItem"><a class="Featured-navListLink"><span class="Featured-navListLabel">1st item</span></a></li>
+      </ul>
+    </nav>
+  </section>
+
+  <section class="Newsletter">
+    <h2 class="Newsletter-title">Join my email newsletter</h2>
+
+    <form class="Newsletter-form">
+      <label class="Newsletter-label">Email</label>
+      <input class="Newsletter-input" type="email">
+      <button class="Newsletter-button">Submit</button>
+    </form>
+  </section>
+
+  <section class="Summary">
+    <a class="Summary-titleLink">
+      <h2 class="Summary-titleText">I am currently...</h2>
+    </a>
+
+    <ul class="Summary-list">
+      <li class="Summary-listItem">Lorem <a>ipsum dolor sit</a> amet, consectetur adipiscing.</li>
+      <li class="Summary-listItem">Ut enim ad minim veniam, quis nostrud exercitation ullamco.</li>
+      <li class="Summary-listItem">Duis aute irure dolor in reprehenderit in voluptate.</li>
+      <li class="Summary-listItem">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt. </li>
+      <li class="Summary-listItem">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.</li>
+      <li class="Summary-listItem">Duis aute irure dolor in reprehenderit in.</li>
+    </ul>
+  </section>
+
+  <section class="Posts">
+    <h2 class="Posts-title">Posts</h2>
+
+    <!-- <div>
+      {% for post in posts %}
+        <article class="Post {{ post.type }}">
+          {% if post.type == 'Tweet'  %}
+            <div class="Post-icon">
+              {{ icons.tweet|raw }}
+            </div>
+
+            <a class="Tweet-userImageLink"><img class="Tweet-userImage" src="{{ post.twitter_user_profile_image_url }}"></a>
+
+            <div class="Tweet-content">
+              <div class="Tweet-header">
+                <a class="Tweet-username">{{ post.twitter_user_name }}</a>
+                <a class="Tweet-screenname">@{{ post.twitter_user_screen_name }}</a>
+                <time datetime="{{ post.date }}" class="Tweet-date">2 hrs ago</time>
+              </div>
+
+              <div class="Tweet-tweet {{ post.text_count }}">{{ post.content|raw }}</div>
+
+              {% if post.tweet_image_1 %}
+                <a class="Tweet-imageLink"><img class="Tweet-image" src="{{ post.tweet_image_1 }}"></a>
+              {% endif %}
+            </div>
+          {% endif %}
+        </article>
+      {% endfor %}
+
+      <div class="Tweet-more">
+        <button class="Tweet-moreButton">+</button><span class="Tweet-moreText">4 more Tweets <time class="Tweet-moreDate">in the last 3 days</time></span>
+      </div>
+    </div> -->
+
+    <nav>
+      <ul>
+        <li><a>Prev</a></li>
+        <li>Page 1 of 100</li>
+        <li><a>Next</a></li>
+      </ul>
+    </nav>
+  </section>
+<% include ../sublayouts/footer %>

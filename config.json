@@ -1,8 +1,7 @@
 {
     "gulpTasks": {
         "phpunit": "phpunit",
-        "phpcs": "phpcs",
-        "sass": "sass"
+        "phpcs": "phpcs"
     },
     "tests": {
         "dirs": {

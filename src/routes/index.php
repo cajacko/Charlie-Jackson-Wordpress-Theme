@@ -18,4 +18,6 @@ ob_start("ob_gzhandler");
 // Render the template
 $content = $template->render(array());
 
+$content = minify_classes_ids($content);
+
 echo $content;

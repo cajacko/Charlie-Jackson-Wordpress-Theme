@@ -1,7 +1,10 @@
 {
     "gulpTasks": {
         "phpunit": "phpunit",
-        "phpcs": "phpcs"
+        "phpcs": "phpcs",
+        "sass": "sass",
+        "watch": "watch",
+        "scripts": "scripts"
     },
     "tests": {
         "dirs": {
@@ -17,5 +20,19 @@
             "dir": "./vendor/"
         }
     },
-    "localhost": "http://charlie-jackson.local.com:81"
+    "localhost": "http://charlie-jackson.local.com:81",
+    "styles": {
+        "import": "./src/styles/main.scss",
+        "export": "./src/public/",
+        "main": "style.css",
+        "min": "style.min.css",
+        "files": "./src/styles/**/*.scss"
+    },
+    "javascripts": {
+        "import": "./src/javascripts/main.js",
+        "export": "./src/public/",
+        "main": "main.js",
+        "min": "main.min.js",
+        "files": "./src/javascripts/**/*.js"
+    }
 }

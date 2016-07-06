@@ -1,0 +1,78 @@
+.Newsletter {
+  padding: 40px 10px;
+}
+
+.Newsletter-title {
+  margin: 0 0 20px 0;
+  line-height: 1;
+}
+
+.Newsletter-form {
+  @include clearFix;
+  position: relative;
+  margin-bottom: 15px;
+}
+
+.Newsletter-label {
+  position: absolute;
+  top: 10px;
+  line-height: 1;
+  left: 0;
+  color: $Gray-dark;
+  transition: top .25s ease-in-out, font-size .25s ease-in-out;
+  cursor: text;
+
+  .u-active & {
+    top: -12px;
+    font-size: 12px;
+  }
+}
+
+$Newsletter-button--width: 65px;
+$Newsletter-buttonBig--width: 70px;
+$Newsletter-buttonDiff: ($Newsletter-buttonBig--width - $Newsletter-button--width) /2;
+$Newsletter-button--top: -16px;
+$Newsletter-button--bottom: 0;
+
+.Newsletter-input {
+  width: calc(100% - #{$Newsletter-button--width + 10px}); 
+  background: none;
+  border: none;
+  border-bottom: 2px solid $Gray;
+  box-sizing: border-box;
+  padding: 5px 0;
+  border-radius: 0;
+
+  &:active,
+  &:focus,
+  &:hover,
+  .Newsletter-label:hover + & {
+    border-bottom-color: $Primary;
+    outline: none;
+    appearance: none;
+  }
+}
+
+$transitionDuration: 0.1s;
+
+.Newsletter-button {
+  width: $Newsletter-button--width;
+  height: $Newsletter-button--width;
+  border-radius: 50%;
+  border: none;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.28);
+  position: absolute;
+  top: $Newsletter-button--top;
+  right: $Newsletter-button--bottom;
+  transition: top $transitionDuration ease-in-out, right $transitionDuration ease-in-out, height $transitionDuration ease-in-out, width $transitionDuration ease-in-out;
+  cursor: pointer;
+
+  &:active,
+  &:focus,
+  &:hover {
+    width: $Newsletter-buttonBig--width;
+    height: $Newsletter-buttonBig--width;
+    top: $Newsletter-button--top - $Newsletter-buttonDiff;
+    right: $Newsletter-button--bottom - $Newsletter-buttonDiff;
+  }
+}

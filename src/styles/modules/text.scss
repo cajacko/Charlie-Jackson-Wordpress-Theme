@@ -1,0 +1,27 @@
+a {
+  color: $Primary-dark;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+}
+
+button {
+  background: $Primary;
+  color: $White;
+  text-transform: uppercase;
+
+  &:focus,
+  &:active {
+    appearance: none;
+    background: $Primary-dark;
+    outline: none;
+  }
+}

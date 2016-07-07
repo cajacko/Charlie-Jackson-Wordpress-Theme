@@ -11,6 +11,8 @@ require('./gulp/sass')(gulp);
 
 require('./gulp/scripts')(gulp);
 
+require('./gulp/minify-attrs')(gulp);
+
 require('./gulp/watch')(gulp);
 
 // The default gulp task

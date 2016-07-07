@@ -3,7 +3,7 @@
  */
 var autoprefixer = require('gulp-autoprefixer');
 var config = require('../config.json');
-var minifyCss = require('gulp-minify-css');
+var cleanCSS = require('gulp-clean-css');
 var rename = require('gulp-rename');
 var sass = require('gulp-sass');
 
@@ -20,7 +20,7 @@ module.exports = function(gulp) {
       }))
       .pipe(gulp.dest(stylesExport))
       .pipe(rename(config.styles.min))
-      .pipe(minifyCss())
+      .pipe(cleanCSS())
       .pipe(gulp.dest(stylesExport));
   });
 };

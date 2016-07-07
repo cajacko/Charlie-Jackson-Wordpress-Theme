@@ -4,7 +4,8 @@
         "phpcs": "phpcs",
         "sass": "sass",
         "watch": "watch",
-        "scripts": "scripts"
+        "scripts": "scripts",
+        "minifyAttrs": "minifyAttrs"
     },
     "tests": {
         "dirs": {

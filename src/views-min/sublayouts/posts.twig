@@ -1,0 +1,43 @@
+<section class="Posts">
+  <h2 class="Posts-title">Posts</h2>
+
+  <div>
+    {% for post in posts %}
+      <article class="Post {{ post.type }}">
+        {% if post.type == 'Tweet'  %}
+          <div class="Post-icon">
+            {{ icons.tweet|raw }}
+          </div>
+
+          <a class="Tweet-userImageLink"><img class="Tweet-userImage" src="{{ post.twitter_user_profile_image_url }}"></a>
+
+          <div class="Tweet-content">
+            <div class="Tweet-header">
+              <a class="Tweet-username">{{ post.twitter_user_name }}</a>
+              <a class="Tweet-screenname">@{{ post.twitter_user_screen_name }}</a>
+              <time datetime="{{ post.date }}" class="Tweet-date">2 hrs ago</time>
+            </div>
+
+            <div class="Tweet-tweet {{ post.text_count }}">{{ post.content|raw }}</div>
+
+            {% if post.tweet_image_1 %}
+              <a class="Tweet-imageLink"><img class="Tweet-image" src="{{ post.tweet_image_1 }}"></a>
+            {% endif %}
+          </div>
+        {% endif %}
+      </article>
+    {% endfor %}
+
+    <div class="Tweet-more">
+      <button class="Tweet-moreButton">+</button><span class="Tweet-moreText">4 more Tweets <time class="Tweet-moreDate">in the last 3 days</time></span>
+    </div>
+  </div>
+
+  <nav>
+    <ul>
+      <li><a>Prev</a></li>
+      <li>Page 1 of 100</li>
+      <li><a>Next</a></li>
+    </ul>
+  </nav>
+</section>
